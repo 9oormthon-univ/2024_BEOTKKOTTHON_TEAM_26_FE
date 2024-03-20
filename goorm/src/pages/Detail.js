@@ -1,4 +1,5 @@
-function DetailPage1() {
+// 상세페이지 2
+function Detail() {
     return(
         <div className="container">
             <div className="row">
@@ -17,4 +18,4 @@ function DetailPage1() {
 
 }
 
-export default DetailPage1
+export default Detail
