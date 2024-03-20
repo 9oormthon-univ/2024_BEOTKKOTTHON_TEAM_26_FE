@@ -53,20 +53,28 @@ function Categories() {
                     <button className="button-in-category">브라타 치즈</button>
                 </div>
                 {/*음식사진들 나열하는 카드*/}
-                <Container>
-                    <Row>
-                        <Col><CardsInCategory></CardsInCategory></Col>
-                        <Col><CardsInCategory></CardsInCategory></Col>
-                        <Col><CardsInCategory></CardsInCategory></Col>
+                {/*<Container>*/}
+                {/*    <Row>*/}
+                {/*        <Col><CardsInCategory></CardsInCategory></Col>*/}
+                {/*        <Col><CardsInCategory></CardsInCategory></Col>*/}
+                {/*        <Col><CardsInCategory></CardsInCategory></Col>*/}
 
-                    </Row>
-                    <Row>
-                        <Col><CardsInCategory></CardsInCategory></Col>
-                        <Col><CardsInCategory></CardsInCategory></Col>
-                        <Col><CardsInCategory></CardsInCategory></Col>
+                {/*    </Row>*/}
+                {/*    <Row>*/}
+                {/*        <Col><CardsInCategory></CardsInCategory></Col>*/}
+                {/*        <Col><CardsInCategory></CardsInCategory></Col>*/}
+                {/*        <Col><CardsInCategory></CardsInCategory></Col>*/}
+                {/*    </Row>*/}
+                {/*</Container>*/}
+                <Container>
+                    <Row className="g-4">
+                        {Array.from({ length: 6 }).map((_, idx) => ( // 6개의 카드를 생성
+                            <Col key={idx} xs={12} md={6} lg={4}> {/* 화면 크기에 따른 열 조정 */}
+                                <CardsInCategory />
+                            </Col>
+                        ))}
                     </Row>
                 </Container>
-
             </div>
         )
 
