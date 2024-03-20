@@ -1,0 +1,24 @@
+.button-in-category {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 9px 11px;
+    gap: 15px;
+    height: 28px;
+    background-color: #DEDEDE;
+    border-radius: 20px;
+    border: none;
+    color: white;
+    text-align: center;
+    margin: 5px;
+    cursor: pointer;
+    color: black;
+}
+
+/* 버튼이 활성화될 때 색상 변경 */
+.button-in-category:hover {
+    background-color: #004716; /* 활성화될 때의 색상, 예시로 적당한 값을 넣었습니다 */
+    color: white;
+}
+
+

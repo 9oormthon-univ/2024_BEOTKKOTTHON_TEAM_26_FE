@@ -1,3 +1,19 @@
 .custom-progress-bar .progress-bar {
     background-color: #8FD1A3; /* 원하는 색상 코드로 변경 */
 }
+/*진척도 바 가운데 동그라미*/
+.circle {
+    width: 40px;
+    height: 40px;
+    background-color: #8FD1A3;
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+/*진척도바 오른쪽에 거리표시*/
+.distance-text {
+    position: absolute;
+    right: 0;
+    top: -25px;
+}
