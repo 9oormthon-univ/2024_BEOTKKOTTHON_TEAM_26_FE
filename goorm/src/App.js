@@ -3,7 +3,6 @@ import MainFunding from "./pages/main/MainFunding";
 import Contest from "./pages/main/Contest";
 import Categories from "./pages/Categories";
 import Detail from "./pages/Detail";
-import Test from "./pages/Test";
 
 function App() {
   return (
@@ -14,19 +13,13 @@ function App() {
 
           <Route path="/Contest" element={<Contest />} />
 
-            {/*상세페이지 1,2*/}
-            <Route path="/categories" element={<Categories />} />
-            <Route path="/detail/:id" element={ <Detail/> } />
-            <Route path="/test" element={ <Test/> } />
-
+          {/*상세페이지 1,2*/}
+          <Route path="/categories" element={<Categories />} />
+          <Route path="/detail/:id" element={<Detail />} />
         </Routes>
-
-
       </div>
     </BrowserRouter>
-
   );
 }
-
 
 export default App;
