@@ -1,6 +1,8 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import MainFunding from "./pages/main/MainFunding";
 import Contest from "./pages/main/Contest";
+import Categories from "./pages/Categories";
+import Detail from "./pages/Detail";
 
 function App() {
   return (
@@ -17,13 +19,9 @@ function App() {
             <Route path="/test" element={ <Test/> } />
 
         </Routes>
-
-
       </div>
     </BrowserRouter>
-
   );
 }
-
 
 export default App;
