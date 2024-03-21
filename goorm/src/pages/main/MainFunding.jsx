@@ -9,7 +9,7 @@ const Background = styled.div`
   height: 100vh;
   font-size: 40px;
 `;
-const Footer = styled.div`
+const Header = styled.div`
   width: 1280px;
   height: 90px;
 `;
@@ -71,7 +71,7 @@ const Notice = styled.div`
 `;
 const AdvArea = styled.div`
   position: relative;
-  width: 1280px;
+  width: 1280px; 
   height: 114px;
   background: black;
 `;
@@ -128,7 +128,7 @@ const FundingTitle1 = styled.div`
   width: 91px;
   top: 80px;
   left: -18px;
-  font-family: 'Arial';
+  font-family: "Arial";
   font-weight: bold;
   font-size: 12px;
   line-height: 18px;
@@ -140,7 +140,7 @@ const FundingTitle2 = styled.div`
   width: 91px;
   top: 80px;
   left: 68px;
-  font-family: 'Arial';
+  font-family: "Arial";
   font-weight: bold;
   font-size: 12px;
   line-height: 18px;
@@ -152,7 +152,7 @@ const FundingTitle3 = styled.div`
   width: 91px;
   top: 80px;
   left: 156px;
-  font-family: 'Arial';
+  font-family: "Arial";
   font-weight: bold;
   font-size: 12px;
   line-height: 18px;
@@ -164,7 +164,7 @@ const FundingTitle4 = styled.div`
   width: 91px;
   top: 80px;
   left: 243px;
-  font-family: 'Arial';
+  font-family: "Arial";
   font-weight: bold;
   font-size: 12px;
   line-height: 18px;
@@ -176,7 +176,7 @@ const FundingTitle5 = styled.div`
   width: 91px;
   top: 80px;
   left: 331px;
-  font-family: 'Arial';
+  font-family: "Arial";
   font-weight: bold;
   font-size: 12px;
   line-height: 18px;
@@ -197,7 +197,7 @@ const CateCon = styled.div`
   width: 1120px;
   height: 140px;
   margin: auto;
-  background: #FFFFFF;
+  background: #ffffff;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 30px;
 `;
@@ -208,7 +208,7 @@ const CateTitle = styled.div`
   left: 30px;
   top: 8px;
 
-  font-family: 'Arial';
+  font-family: "Arial";
   font-style: normal;
   font-weight: 700;
   font-size: 18px;
@@ -232,7 +232,7 @@ const FoodType1 = styled.div`
   left: 165px;
   top: 110px;
 
-  font-family: 'Arial';
+  font-family: "Arial";
   font-style: normal;
   font-weight: 400;
   font-size: 12px;
@@ -246,7 +246,7 @@ const FoodType2 = styled.div`
   left: 260px;
   top: 110px;
   text-align: center;
-  font-family: 'Arial';
+  font-family: "Arial";
   font-style: normal;
   font-weight: 400;
   font-size: 12px;
@@ -260,7 +260,7 @@ const FoodType3 = styled.div`
   left: 430px;
   top: 110px;
 
-  font-family: 'Arial';
+  font-family: "Arial";
   font-style: normal;
   font-weight: 400;
   font-size: 12px;
@@ -274,7 +274,7 @@ const FoodType4 = styled.div`
   left: 560px;
   top: 110px;
 
-  font-family: 'Arial';
+  font-family: "Arial";
   font-style: normal;
   font-weight: 400;
   font-size: 12px;
@@ -288,7 +288,7 @@ const FoodType5 = styled.div`
   left: 692px;
   top: 110px;
 
-  font-family: 'Arial';
+  font-family: "Arial";
   font-style: normal;
   font-weight: 400;
   font-size: 12px;
@@ -302,7 +302,7 @@ const FoodType6 = styled.div`
   left: 822px;
   top: 110px;
 
-  font-family: 'Arial';
+  font-family: "Arial";
   font-style: normal;
   font-weight: 400;
   font-size: 12px;
@@ -316,7 +316,7 @@ const FoodType7 = styled.div`
   left: 955px;
   top: 110px;
 
-  font-family: 'Arial';
+  font-family: "Arial";
   font-style: normal;
   font-weight: 400;
   font-size: 12px;
@@ -330,7 +330,7 @@ const FoodType8 = styled.div`
   left: 1074px;
   top: 110px;
   text-align: center;
-  font-family: 'Arial';
+  font-family: "Arial";
   font-style: normal;
   font-weight: 400;
   font-size: 12px;
@@ -342,14 +342,14 @@ const DistanceArea = styled.div`
   width: 1280px;
   height: 110px;
 `;
-const DisTitle = styled.div `
+const DisTitle = styled.div`
   position: absolute;
   width: 300px;
   height: 30px;
   left: 112px;
   top: 19px;
 
-  font-family: 'Arial';
+  font-family: "Arial";
   font-style: normal;
   font-weight: 700;
   font-size: 18px;
@@ -374,7 +374,7 @@ const NowTitle = styled.div`
   height: 23px;
   padding-left: 36px;
   margin-bottom: 10px;
-  font-family: 'Arial';
+  font-family: "Arial";
   font-style: normal;
   font-weight: 700;
   font-size: 18px;
@@ -394,44 +394,44 @@ const NowCon = styled.div`
   align-items: center;
 `;
 const NowBox = styled.div`
-  position: relative; 
+  position: relative;
   width: 332px;
   height: 340px;
 `;
 const NowImg = styled.div`
-  position: relative; 
+  position: relative;
   width: 332px;
   height: 228px;
   border-radius: 8px;
   background: pink;
 `;
 const NowTitleDetail = styled.div`
-  position: relative; 
+  position: relative;
   width: 332px;
   height: 23px;
   margin: auto;
   margin-top: 10px;
   text-align: center;
-  font-family: 'Arial';
+  font-family: "Arial";
   font-style: normal;
   font-weight: 900;
   font-size: 18px;
   line-height: 27px;
   letter-spacing: -0.1px;
-  color: #00591B;
+  color: #00591b;
 `;
 const NowDesc = styled.div`
-position: relative; 
-width: 332px;
-height: 18px;
-margin-top: 5px;
-text-align: center;
-font-family: 'Arial';
-font-style: normal;
-font-weight: 700;
-font-size: 12px;
-line-height: 18px;
-color: #00591B;
+  position: relative;
+  width: 332px;
+  height: 18px;
+  margin-top: 5px;
+  text-align: center;
+  font-family: "Arial";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 18px;
+  color: #00591b;
 `;
 const OpenBtn = styled.div`
   position: relative;
@@ -441,9 +441,9 @@ const OpenBtn = styled.div`
   margin-top: 5px;
   background: #004716;
   border-radius: 8px;
-  line-height: 42px; 
+  line-height: 42px;
   color: #fff;
-  font-family: 'Arial';
+  font-family: "Arial";
   font-weight: 700;
   font-size: 16px;
   text-align: center;
@@ -453,7 +453,7 @@ const OpenBtn = styled.div`
 const MainFunding = () => {
   return (
     <Background>
-      <Footer>
+      <Header>
         <Logo>
           <img
             src={`${process.env.PUBLIC_URL}/images/logo.png`}
@@ -478,7 +478,7 @@ const MainFunding = () => {
             </Notice>
           </MenuBox>
         </MenuCon>
-      </Footer>
+      </Header>
 
       <AdvArea></AdvArea>
 
@@ -487,78 +487,103 @@ const MainFunding = () => {
           <FundingBox1>
             <FundingCir>
               <img
-            src={`${process.env.PUBLIC_URL}/images/do.png`} width="54px"/>
-            </FundingCir>  
+                src={`${process.env.PUBLIC_URL}/images/do.png`}
+                width="54px"
+              />
+            </FundingCir>
           </FundingBox1>
           <FundingTitle1>펀딩하기</FundingTitle1>
           <FundingBox2>
             <FundingCir>
-            <img
-            src={`${process.env.PUBLIC_URL}/images/live.png`} width="54px"/>
-            </FundingCir>     
+              <img
+                src={`${process.env.PUBLIC_URL}/images/live.png`}
+                width="54px"
+              />
+            </FundingCir>
           </FundingBox2>
-          <FundingTitle2>실시간 펀딩 현황</FundingTitle2>      
+          <FundingTitle2>실시간 펀딩 현황</FundingTitle2>
           <FundingBox3>
             <FundingCir>
-            <img
-            src={`${process.env.PUBLIC_URL}/images/complete.png`} width="54px"/>
+              <img
+                src={`${process.env.PUBLIC_URL}/images/complete.png`}
+                width="54px"
+              />
             </FundingCir>
           </FundingBox3>
           <FundingTitle3>완료 펀딩</FundingTitle3>
           <FundingBox4>
             <FundingCir>
-            <img
-            src={`${process.env.PUBLIC_URL}/images/review.png`} width="54px"/>
+              <img
+                src={`${process.env.PUBLIC_URL}/images/review.png`}
+                width="54px"
+              />
             </FundingCir>
           </FundingBox4>
           <FundingTitle4>구매 후기</FundingTitle4>
           <FundingBox5>
             <FundingCir>
-            <img
-            src={`${process.env.PUBLIC_URL}/images/month.png`} width="54px"/>
+              <img
+                src={`${process.env.PUBLIC_URL}/images/month.png`}
+                width="54px"
+              />
             </FundingCir>
           </FundingBox5>
           <FundingTitle5>이달의 기업</FundingTitle5>
-          <FtCon>
-          </FtCon>
+          <FtCon></FtCon>
         </FundingCon>
       </FundingArea>
 
       <CategoryArea>
         <CateCon>
           <CateTitle>음식 카테고리</CateTitle>
-            <CatePic1>
+          <CatePic1>
             <img
-            src={`${process.env.PUBLIC_URL}/images/rice.png`} width="61px"/>
-            </CatePic1>
-            <CatePic2>
-              <img
-            src={`${process.env.PUBLIC_URL}/images/dosirack.png`} width="61px"/>
-            </CatePic2>
-            <CatePic3>
+              src={`${process.env.PUBLIC_URL}/images/rice.png`}
+              width="61px"
+            />
+          </CatePic1>
+          <CatePic2>
             <img
-            src={`${process.env.PUBLIC_URL}/images/noodle.png`} width="61px"/>
-            </CatePic3>
-            <CatePic4>
+              src={`${process.env.PUBLIC_URL}/images/dosirack.png`}
+              width="61px"
+            />
+          </CatePic2>
+          <CatePic3>
             <img
-            src={`${process.env.PUBLIC_URL}/images/dduck.png`} width="61px"/>
-            </CatePic4>
-            <CatePic5>
-              <img
-            src={`${process.env.PUBLIC_URL}/images/hamburger.png`} width="61px"/>
-            </CatePic5>
-            <CatePic6>
+              src={`${process.env.PUBLIC_URL}/images/noodle.png`}
+              width="61px"
+            />
+          </CatePic3>
+          <CatePic4>
             <img
-            src={`${process.env.PUBLIC_URL}/images/japan.png`} width="61px"/>
-            </CatePic6>
-            <CatePic7>
+              src={`${process.env.PUBLIC_URL}/images/dduck.png`}
+              width="61px"
+            />
+          </CatePic4>
+          <CatePic5>
             <img
-            src={`${process.env.PUBLIC_URL}/images/wellbing.png`} width="61px"/>
-            </CatePic7>
-            <CatePic8>
+              src={`${process.env.PUBLIC_URL}/images/hamburger.png`}
+              width="61px"
+            />
+          </CatePic5>
+          <CatePic6>
             <img
-            src={`${process.env.PUBLIC_URL}/images/dessert.png`} width="61px"/>
-            </CatePic8>
+              src={`${process.env.PUBLIC_URL}/images/japan.png`}
+              width="61px"
+            />
+          </CatePic6>
+          <CatePic7>
+            <img
+              src={`${process.env.PUBLIC_URL}/images/wellbing.png`}
+              width="61px"
+            />
+          </CatePic7>
+          <CatePic8>
+            <img
+              src={`${process.env.PUBLIC_URL}/images/dessert.png`}
+              width="61px"
+            />
+          </CatePic8>
         </CateCon>
         <FoodType1>한식</FoodType1>
         <FoodType2>다이어트 도시락</FoodType2>
@@ -573,7 +598,14 @@ const MainFunding = () => {
       <DistanceArea>
         <DisTitle>현재 내 위치에서 마켓까지 최대 거리</DisTitle>
         <DisBar>
-          <input type="range" min="0" max="100" value="20" class="slider" id="myRange"></input>
+          <input
+            type="range"
+            min="0"
+            max="100"
+            value="20"
+            class="slider"
+            id="myRange"
+          ></input>
         </DisBar>
       </DistanceArea>
 
@@ -584,11 +616,18 @@ const MainFunding = () => {
             <NowImg></NowImg>
             <NowTitleDetail>카페 어쩌고</NowTitleDetail>
             <NowDesc>설명이라네요</NowDesc>
-            <OpenBtn><img
+            <OpenBtn>
+              <img
                 src={`${process.env.PUBLIC_URL}/images/whiteBell.png`}
                 width="18px"
-                height="19.6px" style={{ marginTop: "-3px", verticalAlign: "middle", marginRight: "5px" }}
-              />펀딩 open!
+                height="19.6px"
+                style={{
+                  marginTop: "-3px",
+                  verticalAlign: "middle",
+                  marginRight: "5px",
+                }}
+              />
+              펀딩 open!
             </OpenBtn>
           </NowBox>
           <NowBox>
