@@ -13,11 +13,9 @@ function App() {
 
           <Route path="/Contest" element={<Contest />} />
 
-            {/*상세페이지 1,2*/}
-            <Route path="/categories" element={<Categories />} />
-            <Route path="/detail/:id" element={ <Detail/> } />
-            <Route path="/test" element={ <Test/> } />
-
+          {/*상세페이지 1,2*/}
+          <Route path="/categories" element={<Categories />} />
+          <Route path="/detail/:id" element={<Detail />} />
         </Routes>
       </div>
     </BrowserRouter>
