@@ -10,8 +10,7 @@ import styled, {createGlobalStyle} from "styled-components"; // 커스텀 CSS �
 const ProgressContainer = styled.div`
   position: relative;
   width: 50%;
-left: 10%;
-
+  left: 10%;
 `;
 
 const StyledProgressBar = styled(ProgressBar)`
