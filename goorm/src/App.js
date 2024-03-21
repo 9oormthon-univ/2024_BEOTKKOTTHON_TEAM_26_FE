@@ -1,5 +1,6 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import MainFunding from "./pages/main/MainFunding";
+import Contest from "./pages/main/Contest";
 
 function App() {
   return (
@@ -7,10 +8,14 @@ function App() {
       <div>
         <Routes>
           <Route path="/" element={<MainFunding />} />
+
+          <Route path="/Contest" element={<Contest />} />
+
             {/*상세페이지 1,2*/}
             <Route path="/categories" element={<Categories />} />
             <Route path="/detail/:id" element={ <Detail/> } />
             <Route path="/test" element={ <Test/> } />
+
         </Routes>
 
 
