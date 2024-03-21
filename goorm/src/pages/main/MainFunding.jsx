@@ -18,7 +18,7 @@ const Logo = styled.div`
   width: 75px;
   height: 24.22px;
   left: 83px;
-  top: 30px;
+  top: 24px;
 `;
 const MainTitle = styled.div`
   position: absolute;
