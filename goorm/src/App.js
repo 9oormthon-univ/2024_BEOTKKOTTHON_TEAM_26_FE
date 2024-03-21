@@ -10,10 +10,14 @@ function App() {
       <div>
         <Routes>
           <Route path="/" element={<MainFunding />} />
+
           <Route path="/Contest" element={<Contest />} />
-          {/* 상세페이지 1,2 */}
-          <Route path="/categories" element={<Categories />} />
-          <Route path="/detail/:id" element={<Detail />} />/
+
+            {/*상세페이지 1,2*/}
+            <Route path="/categories" element={<Categories />} />
+            <Route path="/detail/:id" element={ <Detail/> } />
+            <Route path="/test" element={ <Test/> } />
+
         </Routes>
       </div>
     </BrowserRouter>
