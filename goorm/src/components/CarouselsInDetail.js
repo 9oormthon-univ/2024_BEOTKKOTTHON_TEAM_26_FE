@@ -4,10 +4,9 @@ import exampleImage2 from '../images/img_1.png'; // 'src/images' 폴더 내에 �
 import exampleImage3 from '../images/img_2.png';
 
 import styled from "styled-components"; // 'src/images' 폴더 내에 위치
-
 const StyledCarouselItem = styled(Carousel.Item)`
-  max-width: 75%; // 여기서 캐러셀 아이템의 최대 너비를 조절합니다.
-  // 필요하다면 다른 스타일도 추가할 수 있습니다.
+
+  max-width: 75%// 
 `;
 
 function CarouselsInDetail() {
@@ -33,9 +32,10 @@ function CarouselsInDetail() {
             </StyledCarouselItem>
 
 
-            </Carousel>
+        </Carousel>
 
     )
 }
+
 
 export default CarouselsInDetail
