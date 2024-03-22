@@ -5,6 +5,7 @@ const HeaderContainer = styled.div`
   width: 1280px;
   height: 90px;
 `;
+
 const Logo = styled.div`
   position: absolute;
   width: 75px;
@@ -18,6 +19,8 @@ const MenuCon = styled.div`
   height: auto;
   left: 200px;
   top: 50px;
+
+
 `;
 const MenuBox = styled.div`
   position: relative;
