@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import Progress from "../../components/Progress";
 
 const Background = styled.div`
   position: relative;
@@ -358,8 +359,9 @@ const DisTitle = styled.div`
   color: #000000;
 `;
 const DisBar = styled.div`
-  position: relative;
+  position: absolute;
   width: 100%;
+  top: 70px;
 `;
 const NowFundingArea = styled.div`
   position: relative;
@@ -403,7 +405,7 @@ const NowImg = styled.div`
   width: 332px;
   height: 228px;
   border-radius: 8px;
-  background: pink;
+  background: #8FD1A3;
 `;
 const NowTitleDetail = styled.div`
   position: relative;
@@ -598,14 +600,7 @@ const MainFunding = () => {
       <DistanceArea>
         <DisTitle>현재 내 위치에서 마켓까지 최대 거리</DisTitle>
         <DisBar>
-          <input
-            type="range"
-            min="0"
-            max="100"
-            value="20"
-            class="slider"
-            id="myRange"
-          ></input>
+          <Progress now={20} max={100}/>
         </DisBar>
       </DistanceArea>
 
