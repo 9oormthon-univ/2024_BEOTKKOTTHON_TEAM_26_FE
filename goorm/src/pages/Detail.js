@@ -20,14 +20,16 @@ const GlobalStyle = createGlobalStyle`
 const GridContainer = styled.div`
   display: grid;
   height: 100vh; // 전체 화면 높이(뷰포트)
-  grid-template-columns: 60% 40%; // 좌우를 6대 4 비율로 나눔
-  grid-template-rows: 60% 40%; // 상하를 6대 4 비율로 나눔
+  grid-template-columns: 60% 40%;// 좌우를 6대 4 비율로 나눔
+  grid-template-rows: 60% 40%;// 상하를 6대 4 비율로 나눔
+
+
 `;
 
 const TopLeft = styled.div`
   grid-area: 1 / 1 / 2 / 2; // 상단 왼쪽 영역
+ 
 
-  //padding: 20px; // 여백 추가
 `;
 
 const TopRight = styled.div`
@@ -209,7 +211,7 @@ const FlexContainer = styled.div`
   justify-content: space-between; // 요소들 사이의 간격을 최대로 설정
   align-items: end; // 요소들을 수직 방향에서 중앙으로 정렬
   width: 100%; // 컨테이너의 폭을 부모의 100%로 설정
-  padding: 0 15px; // 양쪽에 여백을 줍니다 (필요에 따라 조정)
+  padding: 0 25px; // 양쪽에 여백을 줍니다 (필요에 따라 조정)
  
 `;
 
@@ -346,7 +348,7 @@ function YourGridComponent() {
             <NavbarInCategoriesAndDetailPages></NavbarInCategoriesAndDetailPages>
 
             <GridContainer>
-                <TopLeft><CarouselsInDetail></CarouselsInDetail></TopLeft>
+                <TopLeft ><CarouselsInDetail ></CarouselsInDetail></TopLeft>
                 {/*상단 오른쪽 컨텐츠*/}
                 <TopRight>
                     <div style={{display : 'flex'}}>
@@ -360,24 +362,22 @@ function YourGridComponent() {
                     </div>
 
                     {/*상품제목*/}
-                    <div style={{margin :'10px'}}>
-
-                        <h3>역전할머니 반건조 버터 오징어 밀키트</h3></div>
+                    <div>
+<h4>역전할머니 반건조 버터 오징어 밀키트</h4>
+                        </div>
                     {/*상품 내용*/}
 
-                    <div style={{textAlign :'left'}}>식스펙에서는 역전할머니 반건조 버터 오징어 밀키트를 판매가보다 42% 저렴한 가격으로 만나보실 수 있어요 30년 전통을 이어오고 있는 역전할머니에서 직접
-                        제공하는 반건조 버터 오징어는 출시 이후부터
-                        지금까지 매장 매출의 1위 메뉴입니다.
+                    <div style={{textAlign :'left'}}>식스펙에서는 역전할머니 반건조 버터 오징어 밀키트를 판매가보다 42% 저렴한 가격으로 만나보실 수 있어요
                     </div>
 
                     {/*상품 오픈 일정*/}
-                    <div style={{margin: '15px'}}>
+                    <div style={{marginTop :' 5px'}}>
                         <h3>  3월 19일 (화) 오후 6시 오픈 예정!</h3>
                     </div>
 
                     {/*상품 버튼*/}
 
-                    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-start', gap: '10px', paddingBottom : '3%' , paddingTop: '25px'}}>
+                    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-start', gap: '10px', paddingBottom : '3%' , paddingTop: '5px'}}>
                         <SquareButton>펀딩 참여하기</SquareButton>
 
 
