@@ -15,6 +15,10 @@ const GlobalStyle = createGlobalStyle`
   body {
     color: #00591B; /* 기본 글자 색상 설정 */
     font-family: 'Arial';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 18px;
   }
 `;
 // 전역 설정
@@ -73,12 +77,20 @@ const CategoryButton = styled.button` //.button-in-category
   background-color: #DEDEDE;
   border-radius: 20px;
   border: none;
-  color: white;
+
   text-align: center;
-  margin: 5px;
+  margin: auto 10px;
   cursor: pointer;
   color: black;
-
+  font-family: 'Arial';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 18px;
+  /* identical to box height, or 150% */
+  text-align: center;
+  letter-spacing: -0.1px;
+  
   &:hover {
     background-color: #004716; /* 활성화될 때의 색상 */
     color: white;
@@ -107,7 +119,9 @@ function CardsInCategory() {
         <StyledCard>
             <StyledCardImg variant="top" src={exampleImage} />
             <Card.Body>
-                <Card.Title>Card Title</Card.Title>
+                <Card.Title style={{
+                    textAlign : 'center'
+                }}>Card Title</Card.Title>
                 <Card.Text>
                     Some quick example text to
                 </Card.Text>
@@ -133,16 +147,29 @@ function Categories() {
         .catch(error => console.error('Error:', error));
     }, []);
     */
-
+    const CategoriesHeadFont = styled(Col)`
+  text-align: left;
+  padding: 5px;
+  margin-left: 3%;
+  font-family: 'Arial';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 27px;
+  /* identical to box height, or 150% */
+  letter-spacing: -0.1px;
+`;
     return (
 // 전체를 담는 div 컨테이너
         <div>
+            <GlobalStyle></GlobalStyle>
             <NavbarInCategoriesAndDetailPages></NavbarInCategoriesAndDetailPages>
 
 
 
             {/*현재 위치*/}
-            <div style={{textAlign: 'left', padding: '5px', marginLeft: '3%'}}>현재 내 위치에서 마켓까지 최대 거리</div>
+            <CategoriesHeadFont>현재 내 위치에서 마켓까지 최대 거리</CategoriesHeadFont>
+
 
             {/*현재 위치 scroll bar*/}
             <div>

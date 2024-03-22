@@ -21,6 +21,10 @@ const SquareButton = styled.div`
   gap: 15px;
   height: 54px;
 
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+
   // 기본 상태 (마우스가 벗어났을 때)
   background-color: #DEDEDE;  // 글자색이 배경색이 되도록 설정
   color: #004716;          // 배경색이 글자색이 되도록 설정
@@ -109,17 +113,36 @@ const ProductTitle = styled.div`
   letter-spacing: -0.1px;
   color: #00591B;
 `;
+const FlexDiv = styled.div`
+  align-items: center; // 요소들을 세로축 중앙에 위치시킵니다.
+display: flex;
+`;
 
-const CalorieInfo = styled.div`
+const CalorieInfo = styled.span`
  
-  width: 186px;
-  height: 23px;
+
+
  
   font-family: 'Arial';
   font-style: normal;
   font-weight: 700;
   font-size: 18px;
   line-height: 27px;
+  letter-spacing: -0.1px;
+  color: #00591B;
+`;
+
+const CalorieInfoNext = styled.span`
+ 
+ margin-left: 10px;
+
+ 
+  font-family: 'Arial';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 18px;
+  /* identical to box height, or 150% */
   letter-spacing: -0.1px;
   color: #00591B;
 `;
@@ -211,6 +234,12 @@ const GlobalStyle = createGlobalStyle`
   body {
     color: #00591B; /* 기본 글자 색상 설정 */
     font-family: 'Arial';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 18px;
+    /* identical to box height, or 150% */
+    letter-spacing: -0.1px;
   }
 `;
 // 전역 설정
@@ -245,6 +274,7 @@ function Payment() {
 
 return (
     <div>
+        <GlobalStyle></GlobalStyle>
        <NavbarInCategoriesAndDetailPages/>
         {/*전체화면 감싸는거*/}
        <AllContainer>
@@ -264,9 +294,9 @@ return (
                                    {/*<img src={exampleImage} alt="Example" style={{ maxWidth: '100%', height: 'auto' }} />*/}
                                </Col>
                                <Col xs={7} md={8}>
-                                   <CalorieInfo>
-                                       215.6kcal / 100g (70g)
-                                   </CalorieInfo>
+                                   <FlexDiv>  <CalorieInfo>215.6kcal</CalorieInfo>
+                                       <CalorieInfoNext>/ 100g (70g)</CalorieInfoNext></FlexDiv>
+
                                    <Card.Text >
                                        <NutritionItem>
                                            <StyledProgressBar now={88} />지방 (8.8g)
@@ -293,9 +323,11 @@ return (
 
                                </Col>
                                <Col xs={7} md={8}>
-                                   <CalorieInfo>
-                                       215.6kcal / 100g (70g)
-                                   </CalorieInfo>
+
+                                       <FlexDiv>  <CalorieInfo>215.6kcal</CalorieInfo>
+                                           <CalorieInfoNext>/ 100g (70g)</CalorieInfoNext></FlexDiv>
+
+
                                    <Card.Text >
                                        <NutritionItem>
                                            <StyledProgressBar now={88} />지방 (8.8g)
