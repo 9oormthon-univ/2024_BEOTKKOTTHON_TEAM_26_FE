@@ -2,7 +2,9 @@
 
 📜 Commit Message Convention
 Commit Type
+
 ➕ [ADD] : 코드 추가 및 라이브러리 추가, 새로운 파일 생성
+
 ✨ [FEAT] : 새로운 기능 구현
 ✅ [MOD] : 코드 및 내부 파일 수정
 🧱 [CHORE] : 문법 오류 해결, 타입 변경, 파일 이름 변경 등의 사소한 코드 및 파일 수정
