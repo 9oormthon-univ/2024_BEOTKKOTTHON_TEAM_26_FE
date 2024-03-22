@@ -3,9 +3,12 @@ import NavbarInCategoriesAndDetailPages from "../components/NavbarInCategoriesAn
 import exampleImage from '../images/img.png';
 import exampleImage1 from '../images/오징어.png';
 import exampleImage2 from '../images/버터.png';
+import exampleImage3 from '../images/지도.png';
+import exampleImage4 from '../images/퍼센트원.png';
 import CarouselsInDetail from "../components/CarouselsInDetail";
 import {FaRegSmile} from "react-icons/fa";
-import {Card, Col, ProgressBar as BootstrapProgressBar, Row} from "react-bootstrap";
+import {Button, Card, Col, ProgressBar as BootstrapProgressBar, Row} from "react-bootstrap";
+import React from "react";
 const buttonHeight = '70px'; //오른쪽 버튼 높이
 
 // 전역 설정
@@ -17,38 +20,9 @@ const GlobalStyle = createGlobalStyle`
 `;
 // 전역 설정
 
-const GridContainer = styled.div`
-  display: grid;
-  height: 100vh; // 전체 화면 높이(뷰포트)
-  grid-template-columns: 60% 40%;// 좌우를 6대 4 비율로 나눔
-  grid-template-rows: 60% 40%;// 상하를 6대 4 비율로 나눔
 
 
-`;
 
-const TopLeft = styled.div`
-  grid-area: 1 / 1 / 2 / 2; // 상단 왼쪽 영역
- 
-
-`;
-
-const TopRight = styled.div`
-  grid-area: 1 / 2 / 2 / 3; // 상단 오른쪽 영역
-  padding-right: 16%;
- 
-  text-align: justify;
-`;
-
-const BottomLeft = styled.div`
-  grid-area: 2 / 1 / 3 / 2; // 하단 왼쪽 영역
-  padding-left: 10%;
-  padding-right: 10%;
-`;
-
-const BottomRight = styled.div`
-  grid-area: 2 / 2 / 3 / 3; // 하단 오른쪽 영역
-  padding-right: 16%;
-`;
 
 // 버튼 종류
 // 네모난 버도
@@ -156,6 +130,7 @@ const ProductTitle = styled.div`
   line-height: 27px;
   letter-spacing: -0.1px;
   color: #00591B;
+  margin-left: 5px;
 `;
 
 // 수정된 저장하기 버튼을 위한 스타일드 컴포넌트
@@ -203,6 +178,7 @@ const ProductSubtitle = styled.div`
   font-size: 12px;
   line-height: 18px;
   color: #00591B;
+  margin-bottom: 15px;
 `;
 
 // 컨테이너를 Flex로 정의하여 아이템을 가로로 나열
@@ -212,11 +188,85 @@ const FlexContainer = styled.div`
   align-items: end; // 요소들을 수직 방향에서 중앙으로 정렬
   width: 100%; // 컨테이너의 폭을 부모의 100%로 설정
   padding: 0 25px; // 양쪽에 여백을 줍니다 (필요에 따라 조정)
+ margin-top: 10px;
+`;
+
+const HashTagButton = styled.button` //.button-in-category
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 9px 11px;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 18px;
+  /* identical to box height, or 150% */
+  letter-spacing: -0.1px;
+  height: 18px;
+  background-color: black;
+  border-radius: 20px;
+  border: none;
+  color: white;
+  text-align: center;
+
+  cursor: pointer;
+
+
  
 `;
 
 
 
+
+const BottomLeftContentTitle = styled.div` //.button-in-category
+  font-style: normal;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 27px;
+  /* or 150% */
+  letter-spacing: -0.1px;
+color: #004716;
+
+
+ 
+`;
+
+const BottomLeftContent = styled.div` //.button-in-category
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 18px;
+  /* identical to box height, or 150% */
+  letter-spacing: -0.1px;
+color: #004716;
+
+
+ 
+`;
+
+const HashTagButtonGreenColor = styled.button` //.button-in-category
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 9px 11px;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 18px;
+  /* identical to box height, or 150% */
+  letter-spacing: -0.1px;
+  height: 18px;
+  background-color: #8FD1A3;
+  border-radius: 20px;
+  border: none;
+  color: white;
+  text-align: center;
+
+  cursor: pointer;
+
+
+ 
+`;
 
 // Styled div 컴포넌트 생성
 const CircleImageContainer = styled.div`
@@ -243,9 +293,28 @@ const CircleImageContainer = styled.div`
     transform: translate(-50%, -50%); // 중앙 정렬
   }
 `;
+const FlexDiv = styled.div`
+  align-items: start; // 요소들을 세로축 중앙에 위치시킵니다.
+display: flex;
+  width: 250px;
 
-const CalorieInfo = styled.div`
+`;
+const CalorieInfoNext = styled.div`
+ width: 400px;
+ margin-left: 10px;
+padding-top: 5px;
  
+  font-family: 'Arial';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 18px;
+  /* identical to box height, or 150% */
+  letter-spacing: -0.1px;
+  color: #00591B;
+`;
+const CalorieInfo = styled.div`
+ margin-left: 50px;
   width: 186px;
   height: 23px;
  
@@ -283,15 +352,34 @@ const NutritionItem = styled.div`
   font-size: 12px;
   line-height: 18px; // 높이 일치
   color: #00591B;
-  margin: 5px 0; // 아이템 간 간격 조정
+  margin: 3px 50px; // 아이템 간 간격 조정
+  width: 320px;
 `;
 
 // 여기서 각 NutritionItem 컴포넌트는 영양 정보 텍스트와 ProgressBar를 나란히 배치합니다.
+const MapImageContainer = styled.div`
+  width: 232px;
+  height: 147px;
+  border-radius: 25px;
+  overflow: hidden;
+  background-image: url(${props => props.imageUrl});
+  background-size: cover;
+  background-position: center;
+  margin-left: 20px;
+  margin-bottom: 24px;
+`;
+const MapImage = ({ imageUrl }) => {
+    return <MapImageContainer imageUrl={imageUrl} />;
 
+};
 const CircleImage = ({ imageUrl }) => {
     return <CircleImageContainer imageUrl={imageUrl} />;
-};
 
+};
+const CircleImageContainerBox = styled.div`
+margin-left: 20px;
+  transform: translateY(-10px);
+`;
 
 // styled component  버튼 관련
 //  동그란 거카테고리 페이지에서 사용하는 버튼 스타일
@@ -316,6 +404,64 @@ const CategoryButton = styled.button` //.button-in-category
     color: white;
   }
 `;
+// 원형 이미지를 감싸는 컨테이너
+const CircularImageContainer = styled.div`
+  position: relative;
+  width: 58px; // 원의 크기를 조정할 수 있습니다
+  height: 58px;
+  border-radius: 50%;
+  background-image: url(${props => props.imageUrl});
+  background-size: cover; // 이미지를 컨테이너에 맞춰서 채웁니다
+  background-position: center; // 이미지를 중앙에 위치시킵니다
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform: translateX(150px);
+`;
+const CircularImageWithPercentage = ({ imageUrl, percentage }) => (
+    <CircularImageContainer imageUrl={imageUrl}>
+        <PercentageDisplay>{percentage}%</PercentageDisplay>
+    </CircularImageContainer>
+);
+// 퍼센트 숫자를 표시할 div
+const PercentageDisplay = styled.div`
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 18px;
+  /* identical to box height, or 150% */
+  letter-spacing: -0.1px;
+color: white;
+
+
+
+`;
+// TopRightContentTitle
+
+const TopRightContentTitle = styled.div`
+  font-style: normal;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 27px;
+  /* or 150% */
+  letter-spacing: -0.1px;
+  color: #004716;
+  width: 400px;
+  display: flex;
+  height: 40px;
+`;
+
+const TopRightContent = styled.div`
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 18px;
+  /* identical to box height, or 150% */
+  letter-spacing: -0.1px;
+  color: #004716;
+`;
+
+
 /*category  네모난 거 페이지 음식카드 밑에 cardsincategory컴포넌트 안에 있는 버튼 .button-in-cardsincategory*/
 const CardsCategoryButton = styled(CategoryButton)`
   display: flex;
@@ -334,10 +480,46 @@ const CardsCategoryButton = styled(CategoryButton)`
   width: 100%;
 `;
 
+const GridContainer = styled.div`
+  display: grid;
+  height: 100vh;
+  grid-template-columns: 60% 40%; // 좌우를 60% 대 40% 비율로 나눔
+  grid-template-rows: 25% 25% 50%;
+`;
+
+const TopLeft = styled.div`
+  grid-area: 1 / 1 / 2 / 2; // 1행 1열
+`;
+
+const TopRight = styled.div`
+  grid-area: 1 / 2 / 3 / 3; // 1행과 2행을 합쳐서 오른쪽 상단에 배치 (상하 50% 대 50% 비율로)
+  padding-right: 11%;
+`;
+
+const BottomLeft = styled.div`
+  grid-area: 2 / 1 / 3 / 2; // 2행 1열
+  padding-left: 10%;
+  padding-right: 13%;
+  padding-top: 30%;
+`;
+
+const BottomRight = styled.div`
+  grid-area: 3 / 2 / 4 / 3; // 3행 2열, 오른쪽 하단 영역
+  padding-right: 11%;
+`;
 
 
 
-
+// 각 행을 위한 스타일 컴포넌트
+const RowOne = styled(Row)`
+  height: 20%; // 전체 높이의 20%
+`;
+const RowTwo = styled(Row)`
+  height: 40%; // 전체 높이의 40%
+`;
+const RowThree = styled(Row)`
+  height: 40%; // 전체 높이의 40%
+`;
 // 사용 예
 function YourGridComponent() {
     return (
@@ -363,18 +545,18 @@ function YourGridComponent() {
 
                     {/*상품제목*/}
                     <div>
-<h4 style={{
-    fontFamily : 'Arial',
-    fontStyle : 'normal',
-    fontWeight : '700',
-    fontSize : '18px',
-    lineHeight : '27px'
-}}>역전할머니 반건조 버터 오징어 밀키트</h4>
-                        </div>
+                        <h4 style={{
+                            fontFamily : 'Arial',
+                            fontStyle : 'normal',
+                            fontWeight : '700',
+                            fontSize : '18px',
+                            lineHeight : '27px'
+                        }}>역전할머니 반건조 버터 오징어 밀키트</h4>
+                    </div>
                     {/*상품 내용*/}
 
                     <div style={{textAlign :'left',
-                     fontFamily : 'Arial',
+                        fontFamily : 'Arial',
                         fontStyle : 'normal',
                         fontWeight : '400',
                         fontSize : '12px',
@@ -418,13 +600,22 @@ function YourGridComponent() {
 
                             <Card.Body>
                                 {/*회사 태그 */}
-                                <div>
 
-                                </div>
-                                <Card.Title>62명이 펀딩에 참여했어요!</Card.Title>
+
                                 <Card.Text style={{ textAlign :'justify'}}>
-                                    펀딩 마감 날짜는 4월 2일이에요!
-                                    펀딩에 참여하면 42% 저렴하게 구매할 수 있어요!
+
+                                    <div style={{display :'flex'}}></div>
+                                    <div style={{display :'flex'}}></div>
+                                    <TopRightContentTitle>62명이 펀딩에 참여했어요!
+                                        <CircularImageWithPercentage
+                                            imageUrl={exampleImage4}
+                                            percentage={75}
+                                        />
+                                    </TopRightContentTitle>
+                                    <TopRightContent>펀딩 마감 날짜는 4월 2일이에요!</TopRightContent>
+                                    <TopRightContent>   펀딩에 참여하면 42% 저렴하게 구매할 수 있어요!</TopRightContent>
+
+
                                 </Card.Text>
 
                             </Card.Body>
@@ -435,94 +626,6 @@ function YourGridComponent() {
                 </TopRight>
                 {/*하단 왼쪽 컨텐츠*/}
                 <BottomLeft>
-                    <Card style={{boxShadow : '0px 4px 4px rgba(0, 0, 0, 0.25)', borderRadius : '14px'}}>
-
-
-                        <FlexContainer>
-
-                            <ProductTitle>반건조 버터 오징어</ProductTitle>
-
-                            <SaveButton>저장하기</SaveButton>
-
-
-
-                        </FlexContainer>
-                        <ProductSubtitle>주재료 기준으로 작성되었습니다.</ProductSubtitle>
-
-
-
-
-
-                        <Card.Body>
-                            <Row>
-                                <Col xs={12} md={6}> {/* 첫 번째 열 */}
-                                    <Row>
-                                        <Col xs={5} md={4}>
-                                            <CircleImage imageUrl={exampleImage1} />
-
-                                            {/*<img src={exampleImage} alt="Example" style={{ maxWidth: '100%', height: 'auto' }} />*/}
-                                        </Col>
-                                        <Col xs={7} md={8}>
-                                            <CalorieInfo>
-                                                215.6kcal / 100g (70g)
-                                            </CalorieInfo>
-                                            <Card.Text >
-                                                <NutritionItem>
-                                                    <StyledProgressBar now={88} />지방 (8.8g)
-                                                </NutritionItem>
-                                                <NutritionItem>
-                                                    <StyledProgressBar now={56.4} />탄수화물 (5.64g)
-                                                </NutritionItem>
-                                                <NutritionItem>
-                                                    <StyledProgressBar now={33.4} />단백질 (3.34g)
-                                                </NutritionItem>
-                                                <NutritionItem>
-                                                    <StyledProgressBar now={23.3} />나트륨 (233mg)
-                                                </NutritionItem>
-
-
-                                            </Card.Text>
-                                        </Col>
-                                    </Row>
-                                </Col>
-                                <Col xs={12} md={6}> {/* 두 번째 열 */}
-                                    <Row>
-                                        <Col xs={5} md={4}>
-                                            <CircleImage imageUrl={exampleImage2} />
-
-                                        </Col>
-                                        <Col xs={7} md={8}>
-                                            <CalorieInfo>
-                                                215.6kcal / 100g (70g)
-                                            </CalorieInfo>
-                                            <Card.Text >
-                                                <NutritionItem>
-                                                    <StyledProgressBar now={88} />지방 (8.8g)
-                                                </NutritionItem>
-                                                <NutritionItem>
-                                                    <StyledProgressBar now={56.4} />탄수화물 (5.64g)
-                                                </NutritionItem>
-                                                <NutritionItem>
-                                                    <StyledProgressBar now={33.4} />단백질 (3.34g)
-                                                </NutritionItem>
-                                                <NutritionItem>
-                                                    <StyledProgressBar now={23.3} />나트륨 (233mg)
-                                                </NutritionItem>
-
-
-                                            </Card.Text>
-                                        </Col>
-                                    </Row>
-                                </Col>
-                            </Row>
-
-                        </Card.Body>
-                    </Card>
-
-                </BottomLeft>
-                {/*하단 오른쪽 컨텐츠*/}
-                <BottomRight>
-
                     <Card style={{boxShadow : '0px 4px 4px rgba(0, 0, 0, 0.25)', borderRadius:'14px'}}>
 
                         <Card.Body>
@@ -531,10 +634,10 @@ function YourGridComponent() {
 
                             {/*회사 태그 */}
                             <div style={{display : 'flex'   , gap: '8px', marginBottom: '16px'}}>
-                                <CategoryButton>다이어트 도시락</CategoryButton>
-                                <CategoryButton>다이어트 도시락</CategoryButton>
-                                <CategoryButton>다이어트 도시락</CategoryButton>
-
+                                <HashTagButton>🏅우수판매자</HashTagButton>
+                                <HashTagButton>🏅우수판매자</HashTagButton>
+                                <HashTagButton>🏅우수판매자</HashTagButton>
+                                <HashTagButtonGreenColor>🔔알림받기</HashTagButtonGreenColor>
                             </div>
 
 
@@ -545,13 +648,15 @@ function YourGridComponent() {
 
 
                                 <div>
-                                    <p style={{ margin: 0 }}>역전할머니 맥주</p>
-                                    <p style={{ margin: 0, fontSize: '15px', color: 'grey' }}>2년 연속 우수 판매자로 선정되었어요!</p>
+                                    <BottomLeftContentTitle>역전할머니 맥주</BottomLeftContentTitle>
+                                    <BottomLeftContent>2년 연속 우수 판매자로 선정되었어요!</BottomLeftContent>
+
+
                                 </div>
 
-                                <button className="button-in-category" style={{ backgroundColor: '#8FD1A3', color: 'white', border: 'none', padding: '10px 20px', borderRadius: '20px' }}>
-                                    🔔 알림받기
-                                </button>
+
+                                <MapImage imageUrl={exampleImage3}/>
+
 
                             </div>
 
@@ -559,10 +664,93 @@ function YourGridComponent() {
 
 
 
-                            <hr style={{border: '1px solid #8FD1A3'   }} />
-                            <h6 style={{marginBottom : '-3px'}}>더보기</h6>
                         </Card.Body>
                     </Card>
+                </BottomLeft>
+                {/*하단 오른쪽 컨텐츠*/}
+                <BottomRight>
+
+                    <Card.Body style={{boxShadow : '0px 4px 4px rgba(0, 0, 0, 0.25)', borderRadius : '14px'}}>
+                        <RowOne>
+
+                            <FlexContainer>
+                                <ProductTitle>반건조 버터 오징어</ProductTitle>
+                                <SaveButton>저장하기</SaveButton>
+                            </FlexContainer>
+                            <ProductSubtitle>주재료 기준으로 작성되었습니다.</ProductSubtitle>
+
+                        </RowOne>
+                        <RowTwo>
+                            {/* 두 번째 행의 내용 */}
+                            <Col xs={12} md={6}> {/* 첫 번째 열 */}
+                                <Row>
+                                    <Col xs={5} md={4}>
+                                        <CircleImageContainerBox><CircleImage imageUrl={exampleImage1} /></CircleImageContainerBox>
+
+
+                                        {/*<img src={exampleImage} alt="Example" style={{ maxWidth: '100%', height: 'auto' }} />*/}
+                                    </Col>
+                                    <Col xs={7} md={8}>
+                                        <FlexDiv>  <CalorieInfo>215.6kcal</CalorieInfo>
+                                            <CalorieInfoNext>/ 100g (70g)</CalorieInfoNext></FlexDiv>
+                                        <Card.Text >
+                                            <NutritionItem>
+                                                <StyledProgressBar now={88} />지방 (8.8g)
+                                            </NutritionItem>
+                                            <NutritionItem>
+                                                <StyledProgressBar now={56.4} />탄수화물 (5.64g)
+                                            </NutritionItem>
+                                            <NutritionItem>
+                                                <StyledProgressBar now={33.4} />단백질 (3.34g)
+                                            </NutritionItem>
+                                            <NutritionItem>
+                                                <StyledProgressBar now={23.3} />나트륨 (233mg)
+                                            </NutritionItem>
+
+
+                                        </Card.Text>
+                                    </Col>
+                                </Row>
+                            </Col>
+                        </RowTwo>
+                        <RowThree>
+                            <Col xs={12} md={6}> {/* 두 번째 열 */}
+                                <Row>
+                                    <Col xs={5} md={4}>
+                                        <CircleImageContainerBox><CircleImage imageUrl={exampleImage1} /></CircleImageContainerBox>
+
+                                    </Col>
+                                    <Col xs={7} md={8}>
+                                        <FlexDiv>  <CalorieInfo>215.6kcal</CalorieInfo>
+                                            <CalorieInfoNext>/ 100g (70g)</CalorieInfoNext></FlexDiv>
+                                        <Card.Text >
+                                            <NutritionItem>
+                                                <StyledProgressBar now={88} />지방 (8.8g)
+                                            </NutritionItem>
+                                            <NutritionItem>
+                                                <StyledProgressBar now={56.4} />탄수화물 (5.64g)
+                                            </NutritionItem>
+                                            <NutritionItem>
+                                                <StyledProgressBar now={33.4} />단백질 (3.34g)
+                                            </NutritionItem>
+                                            <NutritionItem>
+                                                <StyledProgressBar now={23.3} />나트륨 (233mg)
+                                            </NutritionItem>
+
+
+                                        </Card.Text>
+                                    </Col>
+                                </Row>
+                            </Col>
+                        </RowThree>
+                    </Card.Body>
+
+
+
+
+
+
+
                 </BottomRight>
             </GridContainer>
         </div>
