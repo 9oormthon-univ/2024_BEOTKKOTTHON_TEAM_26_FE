@@ -15,12 +15,22 @@ const GlobalStyle = createGlobalStyle`
   body {
     color: #00591B; /* 기본 글자 색상 설정 */
     font-family: 'Arial';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 18px;
   }
 `;
 // 전역 설정
+
+// StyledCol 컴포넌트 정의
+const StyledCol = styled(Col)`
+  margin-bottom: -30px; // 여기서는 10px로 설정했지만, 원하는 간격에 맞춰 조절하세요.
+  margin-top: 20px; // 여기서는 10px로 설정했지만, 원하는 간격에 맞춰 조절하세요.
+`;
 // StyledCard 컴포넌트 정의
 const StyledCard = styled(Card)`
-  width: 24rem;
+  width: 19rem;
   color: #00591B;
   border: none; // 테두리 제거
   box-shadow: none; // 만약 그림자도 제거하고 싶다면 이 속성을 추가하세요.
@@ -39,7 +49,7 @@ const BigSquareButton = styled.div`
   align-items: center;
   padding: 9px 11px;
   gap: 15px;
-  height: 54px;
+  height: 36px;
 
   background-color: #004716;
   border-radius: 5px;
@@ -63,16 +73,24 @@ const CategoryButton = styled.button` //.button-in-category
   align-items: center;
   padding: 9px 11px;
   gap: 15px;
-  height: 28px;
+  height: 25px;
   background-color: #DEDEDE;
   border-radius: 20px;
   border: none;
-  color: white;
+
   text-align: center;
-  margin: 5px;
+  margin: auto 10px;
   cursor: pointer;
   color: black;
-
+  font-family: 'Arial';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 18px;
+  /* identical to box height, or 150% */
+  text-align: center;
+  letter-spacing: -0.1px;
+  
   &:hover {
     background-color: #004716; /* 활성화될 때의 색상 */
     color: white;
@@ -101,10 +119,11 @@ function CardsInCategory() {
         <StyledCard>
             <StyledCardImg variant="top" src={exampleImage} />
             <Card.Body>
-                <Card.Title>Card Title</Card.Title>
+                <Card.Title style={{
+                    textAlign : 'center'
+                }}>Card Title</Card.Title>
                 <Card.Text>
-                    Some quick example text to build on the card title and make up the
-                    bulk of the card's content.
+                    Some quick example text to
                 </Card.Text>
                <BigSquareButton>3월 16일 펀딩 오픈!</BigSquareButton>
             </Card.Body>
@@ -128,16 +147,29 @@ function Categories() {
         .catch(error => console.error('Error:', error));
     }, []);
     */
-
+    const CategoriesHeadFont = styled(Col)`
+  text-align: left;
+  padding: 5px;
+  margin-left: 3%;
+  font-family: 'Arial';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 27px;
+  /* identical to box height, or 150% */
+  letter-spacing: -0.1px;
+`;
     return (
 // 전체를 담는 div 컨테이너
         <div>
+            <GlobalStyle></GlobalStyle>
             <NavbarInCategoriesAndDetailPages></NavbarInCategoriesAndDetailPages>
 
 
 
             {/*현재 위치*/}
-            <div style={{textAlign: 'left', padding: '20px', marginLeft: '3%'}}>현재 내 위치에서 마켓까지 최대 거리</div>
+            <CategoriesHeadFont>현재 내 위치에서 마켓까지 최대 거리</CategoriesHeadFont>
+
 
             {/*현재 위치 scroll bar*/}
             <div>
@@ -147,7 +179,7 @@ function Categories() {
 
 
             {/* 카테고리 */}
-            <div style={{display: 'flex', justifyContent: 'flex-start', padding: '20px', marginLeft: '3%'}}>
+            <div style={{display: 'flex', justifyContent: 'flex-start', padding: '10px', marginLeft: '3%'}}>
 
                 <CategoryButton>다이어트 도시락</CategoryButton>
                 <CategoryButton>비건</CategoryButton>
@@ -160,9 +192,9 @@ function Categories() {
             <Container>
                 <Row className="g-4">
                     {Array.from({ length: 6 }).map((_, idx) => ( // 6개의 카드를 생성
-                        <Col key={idx} xs={12} md={6} lg={4}> {/* 화면 크기에 따른 열 조정 */}
+                        <StyledCol key={idx} xs={12} md={6} lg={4}> {/* 화면 크기에 따른 열 조정 */}
                             <CardsInCategory />
-                        </Col>
+                        </StyledCol>
                     ))}
                 </Row>
             </Container>

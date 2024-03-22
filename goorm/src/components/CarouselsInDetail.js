@@ -1,29 +1,41 @@
-import {Carousel} from "react-bootstrap";
+import {Carousel , Image} from "react-bootstrap";
 import exampleImage from '../images/img.png'; // 'src/images' 폴더 내에 위치
 import exampleImage2 from '../images/img_1.png'; // 'src/images' 폴더 내에 위치
 import exampleImage3 from '../images/img_2.png';
-import Image from "react-bootstrap/Image"; // 'src/images' 폴더 내에 위치
+
+import styled from "styled-components"; // 'src/images' 폴더 내에 위치
+const StyledCarouselItem = styled(Carousel.Item)`
+
+  max-width: 75%// 
+`;
+
 function CarouselsInDetail() {
     return (
+
         <Carousel>
-            <Carousel.Item>
+            <StyledCarouselItem>
                 {/*<Image style={{margin: '30px'}} src={exampleImage} fluid/>*/}
-                <Image style={{margin: '20px'}}  src={exampleImage} alt="First slide" fluid />
-            {/*fluid가 반응형*/}
-            </Carousel.Item>
+                <Image style={{ marginLeft :'15%'}}  src={exampleImage} alt="First slide" fluid />
+                {/*fluid가 반응형*/}
+            </StyledCarouselItem>
 
-            <Carousel.Item>
-                <Image style={{margin: '20px'}}  src={exampleImage2} alt="First slide" fluid />
+            <StyledCarouselItem>
+                {/*<Image style={{margin: '30px'}} src={exampleImage} fluid/>*/}
+                <Image style={{ marginLeft :'15%'}}  src={exampleImage2} alt="First slide" fluid />
+                {/*fluid가 반응형*/}
+            </StyledCarouselItem>
 
-            </Carousel.Item>
+            <StyledCarouselItem>
+                {/*<Image style={{margin: '30px'}} src={exampleImage} fluid/>*/}
+                <Image style={{ marginLeft :'15%'}}  src={exampleImage3} alt="First slide" fluid />
+                {/*fluid가 반응형*/}
+            </StyledCarouselItem>
 
-            <Carousel.Item>
-                <Image style={{margin: '20px'}}  src={exampleImage3} alt="First slide" fluid />
-
-            </Carousel.Item>
 
         </Carousel>
+
     )
 }
+
 
 export default CarouselsInDetail
