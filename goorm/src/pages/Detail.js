@@ -363,16 +363,40 @@ function YourGridComponent() {
 
                     {/*상품제목*/}
                     <div>
-<h4>역전할머니 반건조 버터 오징어 밀키트</h4>
+<h4 style={{
+    fontFamily : 'Arial',
+    fontStyle : 'normal',
+    fontWeight : '700',
+    fontSize : '18px',
+    lineHeight : '27px'
+}}>역전할머니 반건조 버터 오징어 밀키트</h4>
                         </div>
                     {/*상품 내용*/}
 
-                    <div style={{textAlign :'left'}}>식스펙에서는 역전할머니 반건조 버터 오징어 밀키트를 판매가보다 42% 저렴한 가격으로 만나보실 수 있어요
+                    <div style={{textAlign :'left',
+                     fontFamily : 'Arial',
+                        fontStyle : 'normal',
+                        fontWeight : '400',
+                        fontSize : '12px',
+                        lineHeight : '18px'
+
+                        /* or 150% */
+                    }}>식스펙에서는 역전할머니 반건조 버터 오징어 밀키트를 판매가보다 42% 저렴한 가격으로 만나보실 수 있어요
                     </div>
 
                     {/*상품 오픈 일정*/}
-                    <div style={{marginTop :' 5px'}}>
-                        <h3>  3월 19일 (화) 오후 6시 오픈 예정!</h3>
+                    <div style={{marginTop :' 5px'
+                    }}>
+                        <h3 style={{
+
+                            fontFamily : 'Arial',
+                            fontStyle : 'normal',
+                            fontWeight : '700',
+                            fontSize : '18px',
+                            lineHeight : '27px',
+                            letterSpacing : '-0.1px',
+                            color: '#004716'
+                        }}>  3월 19일 (화) 오후 6시 오픈 예정!</h3>
                     </div>
 
                     {/*상품 버튼*/}
@@ -389,7 +413,7 @@ function YourGridComponent() {
 
 
                     {/*몇명 참여인지 알려주는 div박스*/}
-                    <div style={{boxShadow : '0px 4px 4px rgba(0, 0, 0, 0.25)'}}>
+                    <div style={{boxShadow : '0px 4px 4px rgba(0, 0, 0, 0.25)',borderRadius: '14px'}}>
                         <Card>
 
                             <Card.Body>
@@ -411,7 +435,7 @@ function YourGridComponent() {
                 </TopRight>
                 {/*하단 왼쪽 컨텐츠*/}
                 <BottomLeft>
-                    <Card style={{boxShadow : '0px 4px 4px rgba(0, 0, 0, 0.25)'}}>
+                    <Card style={{boxShadow : '0px 4px 4px rgba(0, 0, 0, 0.25)', borderRadius : '14px'}}>
 
 
                         <FlexContainer>
@@ -499,7 +523,7 @@ function YourGridComponent() {
                 {/*하단 오른쪽 컨텐츠*/}
                 <BottomRight>
 
-                    <Card style={{boxShadow : '0px 4px 4px rgba(0, 0, 0, 0.25)'}}>
+                    <Card style={{boxShadow : '0px 4px 4px rgba(0, 0, 0, 0.25)', borderRadius:'14px'}}>
 
                         <Card.Body>
 
