@@ -8,6 +8,8 @@ import Payment from "./pages/Payment";
 import DetailView from "./pages/DetailView";
 import Register from "./pages/Register";
 import PayComplete from "./pages/PayComplete";
+import LetterReview from "./pages/LetterReview";
+import Qr from "./pages/Qr";
 import Submit from "./pages/Submit";
 
 
@@ -15,9 +17,6 @@ function App() {
   return (
     <BrowserRouter>
       <div>
-
-
-
         <Routes>
           {/* 메인페이지 */}
           <Route path="/" element={<MainFunding />} />
