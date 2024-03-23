@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styled, { css } from "styled-components";
 import Header from "../../components/Header.jsx";
+import axios from "axios";
 
 const Background = styled.div`
   position: relative;
@@ -48,7 +49,6 @@ const FunImg = styled.div`
   left: 15px;
   backdrop-filter: blur(0.5px);
   border-radius: 14px;
-  background: blue;
 `;
 const ContentBox = styled.div`
   position: absolute;
@@ -84,27 +84,11 @@ const StateBtn = styled.div`
   letter-spacing: -0.1px;
   color: #000000;
 `;
-const FoodType = styled.div`
-  width: auto;
-  height: 27px;
-  margin-right: 10px;
-  background: #8fd1a3;
-  border-radius: 20px;
-  font-family: "Arial";
-  font-style: normal;
-  font-weight: 400;
-  font-size: 12px;
-  line-height: 27px;
-  text-align: center;
-  letter-spacing: -0.1px;
-  color: #ffffff;
-  padding: 0 11px;
-`;
 const Tag = styled.div`
   width: auto;
   height: 27px;
   margin-right: 10px;
-  background: #dedede;
+  background: #004716;
   border-radius: 20px;
   font-family: "Arial";
   font-style: normal;
@@ -113,34 +97,21 @@ const Tag = styled.div`
   line-height: 27px;
   text-align: center;
   letter-spacing: -0.1px;
-  color: #000000;
+  color: #fff;
   padding: 0 11px;
 `;
 const ContentTitle = styled.div`
   position: absolute;
   width: 353px;
   height: 27px;
-  top: 62px;
+  top: 73px;
   padding-left: 10px;
   font-family: "Arial";
   font-style: normal;
   font-weight: 700;
-  font-size: 18px;
+  font-size: 25px;
   line-height: 27px;
   letter-spacing: -0.1px;
-  color: #3a3a3a;
-`;
-const SellerName = styled.div`
-  position: absolute;
-  width: 353px;
-  height: 27px;
-  top: 93px;
-  padding-left: 11px;
-  font-family: "Arial";
-  font-style: normal;
-  font-weight: 400;
-  font-size: 12px;
-  line-height: 18px;
   color: #3a3a3a;
 `;
 const FundingBtn = styled.div`
@@ -152,9 +123,8 @@ const FundingBtn = styled.div`
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 8px;
   color: #ffffff;
-
   font-family: "Arial";
-  font-weight: 400;
+  font-weight: 700;
   font-size: 16px;
   line-height: 50px;
   text-align: center;
@@ -175,17 +145,10 @@ const Circle = styled.div`
   display: flex;
   border-radius: 50%;
   position: relative;
-  ${({ progress }) =>
-    progress === 100
-      ? css`
-          background: #00ff00;
-        `
-      : css`
-          background: conic-gradient(
-            #00591b ${progress}%,
-            #ffffff ${progress}%
-          );
-        `}
+  background: ${({ percent }) =>
+    percent === 100
+      ? "#00ff00"
+      : `conic-gradient(#00591b ${percent}%, #ffffff ${percent}%)`};
 `;
 const Inner_circle = styled.div`
   width: 90%;
@@ -202,61 +165,63 @@ const Inner_circle = styled.div`
 const MyFunding = () => {
   const [progress, setProgress] = useState(0); // 진행률 상태 초기화
 
-  const handleProgressChange = (event) => {
-    const value = event.target.value; // 입력된 값 가져오기
-    if (value >= 0 && value <= 100) {
+  const handleProgressChange = (percent) => {
+    if (percent >= 0 && percent <= 100) {
       // 입력된 값이 유효한지 확인
-      setProgress(value); // 진행률 업데이트
+      setProgress(percent); // 진행률 업데이트
     }
   };
 
+  const [funding, setFunding] = useState([]);
+
+  useEffect(function () {
+    axios
+      .get("http://44.206.161.54:8080/funding/status/1")
+      .then((response) => {
+        setFunding(response.data.result.data.posts);
+        console.log("성공");
+      })
+      .catch((error) => {
+        console.error("에러 발생 : ", error);
+      });
+  }, []);
+
   return (
     <Background>
-      <Header /> {/* Header 컴포넌트를 사용 */}
+      <Header />
       <Title>나의 펀딩 현황</Title>
       <Container>
-        <FundingBox>
-          <FunImg></FunImg>
-
-          <ContentBox>
-            <TagBox>
-              <StateBtn>펀딩진행 중!</StateBtn>
-              <FoodType>디저트</FoodType>
-              <Tag>매콤한</Tag>
-              <Tag>매콤달콤한</Tag>
-            </TagBox>
-
-            <ContentTitle>음식이름제목써주세요.</ContentTitle>
-
-            <SellerName>판매자이름</SellerName>
-
-            <FundingBtn>구매하러 가기</FundingBtn>
-          </ContentBox>
-
-          <Rate>
-            <Circle progress={progress}>
-              <Inner_circle>
-                <span
-                  style={{
-                    display: "flex",
-                    alignItems: "center",
-                    fontSize: "25px",
-                  }}
-                >
-                  {progress}%
-                </span>
-              </Inner_circle>
-            </Circle>
-            <input
-              type="number"
-              value={progress}
-              onChange={handleProgressChange}
-              placeholder="진행률 입력"
-              style={{ position: "absolute", top: "300px", left: "50%" }}
-                />
-          </Rate>
-        </FundingBox>
-       
+        {funding.map((item, index) => (
+          <FundingBox key={index}>
+            <FunImg>
+              <img src={item.img_url} width="224px" height="144px" />
+            </FunImg>
+            <ContentBox>
+              <TagBox>
+                <StateBtn>펀딩진행 중!</StateBtn>
+                <Tag>{item.hashTagnames[0]}</Tag>
+                <Tag>{item.hashTagnames[1]}</Tag>
+              </TagBox>
+              <ContentTitle>{item.title}</ContentTitle>
+              <FundingBtn>펀딩 마감 : {item.fund_end_date}</FundingBtn>
+            </ContentBox>
+            <Rate>
+              <Circle percent={item.percent}>
+                <Inner_circle>
+                  <span
+                    style={{
+                      display: "flex",
+                      alignItems: "center",
+                      fontSize: "25px",
+                    }}
+                  >
+                    {item.percent}%
+                  </span>
+                </Inner_circle>
+              </Circle>
+            </Rate>
+          </FundingBox>
+        ))}
       </Container>
     </Background>
   );

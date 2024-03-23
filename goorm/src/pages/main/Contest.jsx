@@ -1,5 +1,7 @@
 import React from "react";
 import styled from "styled-components";
+import Header from "../../components/Header.jsx";
+import { useNavigate } from "react-router-dom";
 
 const Background = styled.div`
   position: relative;
@@ -9,57 +11,7 @@ const Background = styled.div`
   height: 100vh;
   font-size: 40px;
 `;
-const Header = styled.div`
-  width: 1280px;
-  height: 90px;
-`;
-const Logo = styled.div`
-  position: absolute;
-  width: 75px;
-  height: 24.22px;
-  left: 83px;
-  top: 24px;
-`;
-const MainTitle = styled.div`
-  position: absolute;
-  width: 410px;
-  height: 27px;
-  left: 185px;
-  top: 50px;
 
-  font-family: "Arial";
-  font-weight: bold;
-  font-size: 16px;
-  line-height: 24px;
-  letter-spacing: -0.1px;
-  color: #000000;
-`;
-const MenuCon = styled.div`
-  position: absolute;
-  width: 600px;
-  height: auto;
-  left: 200px;
-  top: 50px;
-`;
-const MenuBox = styled.div`
-  position: relative;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-
-  font-family: "Arial";
-  font-weight: bold;
-  font-size: 16px;
-  line-height: 24px;
-  letter-spacing: -0.1px;
-  color: #000000;
-`;
-const Do = styled.div``;
-const Live = styled.div``;
-const Complete = styled.div``;
-const Review = styled.div``;
-const Month = styled.div``;
 const Body = styled.div`
   position: relative;
   width: 1280px;
@@ -81,29 +33,18 @@ const MakeBtn = styled.div`
   text-align: center;
   letter-spacing: -0.2px;
   color: #ffffff;
+  cursor: pointer;
 `;
 
 const Contest = () => {
+  const navigate = useNavigate();
+  const goSubmit = () => {
+    navigate("/submit");
+  };
   return (
     <Background>
-      <Header>
-        <Logo>
-          <img
-            src={`${process.env.PUBLIC_URL}/images/logo.png`}
-            width="75px"
-            height="24.22px"
-          />
-        </Logo>
-        <MenuCon>
-          <MenuBox>
-            <Do>펀딩하기</Do>
-            <Live>실시간 펀딩 현황</Live>
-            <Complete>완료 펀딩</Complete>
-            <Review>구매 후기</Review>
-            <Month>이달의 기업</Month>
-          </MenuBox>
-        </MenuCon>
-      </Header>
+      <Header/>
+       
 
       <Body>
         <img
@@ -113,7 +54,7 @@ const Contest = () => {
             marginLeft: "10px",
           }}
         />
-        <MakeBtn>펀딩 스펙 만들기</MakeBtn>
+        <MakeBtn onClick={goSubmit}>펀딩 스펙 만들기</MakeBtn>
       </Body>
     </Background>
   );
