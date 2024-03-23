@@ -1,3 +1,4 @@
+
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import MainFunding from "./pages/main/MainFunding";
 import Contest from "./pages/main/Contest";
@@ -22,8 +23,19 @@ function App() {
 
           {/*상세페이지 1,2*/}
           <Route path="/categories" element={<Categories />} />
+
+          <Route path="/categories/:category_id" element={<Categories />} />
+          {/*<Route path="/detail/:id" element={<Detail />} />*/}
           {/*펀딩제품 상세보기*/}
           <Route path="/detailview" element={<DetailView />} />
+
+          <Route path="/detailview/:postId" element={<DetailView />} />
+          {/*결제진행창 */}
+          {/*<Route path="/payment" element={<Payment />} />*/}
+
+          {/*펀딩제품 상세보기*/}
+          <Route path="/detailview" element={<DetailView />} />
+
 
           {/*등록완료 페이지*/}
           <Route path="/register" element={<Register />} />
