@@ -1,13 +1,16 @@
 // 상품 등록 페이지
-import NavbarInCategoriesAndDetailPages from "../components/NavbarInCategoriesAndDetailPages";
+import from "../components/NavbarInCategoriesAndDetailPages";
 import React, { useState } from "react";
 import styled from "styled-components";
+
+
 import { InputGroup } from "react-bootstrap";
 import Form from "react-bootstrap/Form";
 import exampleImage3 from "../images/상품사진등록.png";
 import exampleImage4 from "../images/로딩중.png";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+
 const SubmitContentTitle = styled.div`
   font-style: normal;
   font-weight: 700;
@@ -116,6 +119,7 @@ const LoadingImage = ({ imageUrl, altText = "" }) => {
 };
 
 function Submit() {
+
   const navigate = useNavigate();
   const goCom = () => {
     navigate("/complete");
@@ -239,6 +243,7 @@ function Submit() {
       </div>
     </div>
   );
+
 }
 
 export default Submit;
