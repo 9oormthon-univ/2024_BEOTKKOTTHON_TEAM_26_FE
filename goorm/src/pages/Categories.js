@@ -1,6 +1,7 @@
 // 상세페이지 1
 import logo from '../images/img_3.png'; // 이미지 임포트
 import Container from 'react-bootstrap/Container';
+import axios from 'axios';
 import Navbar from 'react-bootstrap/Navbar';
 import {Button, Card, Col, Nav, NavDropdown, ProgressBar, Row} from "react-bootstrap";
 import Progress from "../components/Progress";
@@ -198,6 +199,18 @@ function Categories() {
                     ))}
                 </Row>
             </Container>
+
+
+
+
+            <button onClick={()=>{
+                axios.get(`${process.env.REACT_APP_API_URL}/logindata`).then((결과)=>{
+                    console.log(결과.data)
+                })
+                    .catch(()=>{
+                        console.log('실패함')
+                    })
+            }}>서버테스트 버튼</button>
         </div>
     )
 
