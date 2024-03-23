@@ -176,7 +176,7 @@ const MyFunding = () => {
 
   useEffect(function () {
     axios
-      .get("http://44.206.161.54:8080/funding/status/1")
+      .get("http://44.206.161.54:8080/funding/status/3")
       .then((response) => {
         setFunding(response.data.result.data.posts);
         console.log("성공");
