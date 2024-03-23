@@ -7,6 +7,8 @@ import Detail from "./pages/Detail";
 import Payment from "./pages/Payment";
 import DetailView from "./pages/DetailView";
 import PayComplete from "./pages/PayComplete";
+import LetterReview from "./pages/LetterReview";
+import Qr from "./pages/Qr";
 
 function App() {
   return (
@@ -29,6 +31,10 @@ function App() {
           <Route path="/payment" element={<Payment />} />
           {/* 결제완료 페이지 */}
           <Route path="/payComplete" element={<PayComplete />} />
+          {/* {편지(후기)페이지} */}
+          <Route path="/letter" element={<LetterReview />} />
+          {/*픽업QR*/}
+          <Route path="/qr" element={<Qr />} />
         </Routes>
       </div>
     </BrowserRouter>
