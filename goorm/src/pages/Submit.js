@@ -6,6 +6,7 @@ import {InputGroup} from "react-bootstrap";
 import Form from 'react-bootstrap/Form';
 import exampleImage3 from '../images/상품사진등록.png';
 import exampleImage4 from '../images/로딩중.png';
+import axios from 'axios';
 const SubmitContentTitle = styled.div`
   font-style: normal;
   font-weight: 700;
@@ -108,20 +109,6 @@ const LoadingImage = ({ imageUrl, altText = '' }) => {
 };
 
 function Submit() {
-    const [imagePreview, setImagePreview] = useState(null);
-
-  const handleFileChange = (event) => {
-    const file = event.target.files[0];
-    const reader = new FileReader();
-
-    reader.onloadend = () => {
-      setImagePreview(reader.result);
-    };
-
-    if (file) {
-      reader.readAsDataURL(file);
-    }
-  };
 
     return (
         <div>
@@ -143,23 +130,47 @@ function Submit() {
                             />
 
                         </InputGroup>
-                        <SquareButton>자주쓰는문구</SquareButton>
+                        
                     </FlexDiv>
 
                     {/*상품사진등록*/}
                     <SubmitContentTitle>상품 사진을 등록해 주세요!</SubmitContentTitle>
 
                     <FlexDiv style={{gap : '20px'}}>
-                        <input type="file" multiple></input>
+                        <input type="file" multiple></input>                        
+                    </FlexDiv>
+                    
+                    {/* 펀딩일정기록란 */}
+                    <SubmitContentTitle>펀딩 마감 일정을 설정해 주세요!</SubmitContentTitle>
+
+                    <FlexDiv style={{gap : '20px'}}>
+                        <input type="date"></input>                        
+                    </FlexDiv>
+
+                   
+                    <SubmitContentTitle>상품에 대해 자유롭게 어필해 주세요!</SubmitContentTitle>
+                    {/*인풋박스*/}
+                    <FlexDiv >
+
+                        <InputGroup>
+                            <Form.Control aria-label="Dollar amount (with dot and two decimal places)" placeholder="ex. 역전할머니 맥주 반건조 버터구이 오징어는 낮은 칼로리와 고소한 맛을 즐길 수 있습니다."
+                                          style={{
+                                              width: '95%', // 너비 조정
+                                              height: '47px',
+                                              borderColor : '#004716'// 높이 조정
+                                          }}
+                            />
+
+                        </InputGroup>
                         
                     </FlexDiv>
+
                     {/*ai 분석란*/}
                     <SubmitContentTitle>AI가 해시태그 생성중!</SubmitContentTitle>
                     {/*버튼*/}
                     <FlexDiv>
-                        <LoadingImage imageUrl={exampleImage4}/>
                         <SubmitButton>분식</SubmitButton>
-                        <SubmitButton>분식</SubmitButton><SubmitButton>분식</SubmitButton><SubmitButton>분식</SubmitButton><SubmitButton>분식</SubmitButton><SubmitButton>분식</SubmitButton>
+                        <SubmitButton>분식</SubmitButton>
                     </FlexDiv>
 
 
@@ -184,6 +195,7 @@ function Submit() {
                                     }}
                                     placeholder="상품에 관련된 정보를 자세히 적어 주세요. 상품정보와 관련없는 내용과  과대광고는 무통보 삭제 될 수 있습니다."
                                 />
+                                <SquareButton>펀딩 등록하기</SquareButton>
                             </Form.Group>
                         </Form>
 
