@@ -5,6 +5,7 @@ import exampleImage from "../../images/ad1.png";
 import exampleImage3 from "../../images/ad2.png";
 import exampleImage2 from "../../images/ad3.png";
 import { Carousel, Image } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
 
 const StyledCarouselItem = styled(Carousel.Item)`
   max-width: 100%;
@@ -471,6 +472,10 @@ const Tag2 = styled.div`
 
 const MainFunding = () => {
   const [fundingData, setFundingData] = useState([]);
+  const navigate = useNavigate();
+  const goDetail = () => {
+    navigate("/categories/4");
+  };
 
   useEffect(() => {
     const fetchData = async () => {
@@ -705,7 +710,7 @@ const MainFunding = () => {
         <NowTitle>지금 뜨고 있는 펀딩</NowTitle>
         <NowCon>
           {fundingData.map((funding) => (
-            <NowBox key={funding.id}>
+            <NowBox key={funding.id} onClick={goDetail}>
               <NowImg>
                 <img
                   src={funding.img_url ?? exampleImage}
