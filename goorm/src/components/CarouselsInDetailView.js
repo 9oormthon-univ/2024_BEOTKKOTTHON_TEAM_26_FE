@@ -102,24 +102,6 @@ function AutoPlay() {
                     </StyledImageWrapper>
                 </div>
 
-
-
-
-                {/*<div>*/}
-                {/*    <h3>  <Image  src={exampleImage3} alt="First slide" fluid /></h3>*/}
-                {/*</div>*/}
-                {/*<div>*/}
-                {/*    <h3>  <Image  src={exampleImage2} alt="First slide" fluid /></h3>*/}
-                {/*</div>*/}
-                {/*<div>*/}
-                {/*    <h3>  <Image  src={exampleImage} alt="First slide" fluid /></h3>*/}
-                {/*</div>*/}
-                {/*<div>*/}
-                {/*    <h3>  <Image  src={exampleImage3} alt="First slide" fluid /></h3>*/}
-                {/*</div>*/}
-                {/*<div>*/}
-                {/*    <h3>  <Image  src={exampleImage2} alt="First slide" fluid /></h3>*/}
-                {/*</div>*/}
             </CustomSlider>
         </div>
     );
