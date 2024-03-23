@@ -713,7 +713,8 @@ const MainFunding = () => {
             <NowBox key={funding.id} onClick={goDetail}>
               <NowImg>
                 <img
-                  src={funding.img_url}
+                  src={funding.img_url ?? exampleImage}
+
                   alt={funding.title}
                   width="332px"
                   height="228px"
