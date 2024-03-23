@@ -6,7 +6,12 @@ import Categories from "./pages/Categories";
 import Detail from "./pages/Detail";
 import Payment from "./pages/Payment";
 import DetailView from "./pages/DetailView";
+import Register from "./pages/Register";
 import PayComplete from "./pages/PayComplete";
+import LetterReview from "./pages/LetterReview";
+import Qr from "./pages/Qr";
+import Submit from "./pages/Submit";
+
 
 function App() {
   return (
@@ -27,8 +32,20 @@ function App() {
           <Route path="/detailview" element={<DetailView />} />
           {/*결제진행창 */}
           <Route path="/payment" element={<Payment />} />
+
+          {/*등록완료 페이지*/}
+          <Route path="/register" element={<Register />} />
+          {/*상품 사진, 정보 등록 페이지*/}
+          <Route path="/submit" element={<Submit />} />
+
+
           {/* 결제완료 페이지 */}
           <Route path="/payComplete" element={<PayComplete />} />
+          {/* {편지(후기)페이지} */}
+          <Route path="/letter" element={<LetterReview />} />
+          {/*픽업QR*/}
+          <Route path="/qr" element={<Qr />} />
+
         </Routes>
       </div>
     </BrowserRouter>
