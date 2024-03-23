@@ -6,10 +6,10 @@ import Categories from "./pages/Categories";
 import Detail from "./pages/Detail";
 import Payment from "./pages/Payment";
 import DetailView from "./pages/DetailView";
-
 import Register from "./pages/Register";
-
 import PayComplete from "./pages/PayComplete";
+import LetterReview from "./pages/LetterReview";
+import Qr from "./pages/Qr";
 import Submit from "./pages/Submit";
 
 
@@ -17,9 +17,6 @@ function App() {
   return (
     <BrowserRouter>
       <div>
-
-
-
         <Routes>
           {/* 메인페이지 */}
           <Route path="/" element={<MainFunding />} />
@@ -44,6 +41,10 @@ function App() {
 
           {/* 결제완료 페이지 */}
           <Route path="/payComplete" element={<PayComplete />} />
+          {/* {편지(후기)페이지} */}
+          <Route path="/letter" element={<LetterReview />} />
+          {/*픽업QR*/}
+          <Route path="/qr" element={<Qr />} />
 
         </Routes>
       </div>
