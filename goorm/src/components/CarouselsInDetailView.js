@@ -7,8 +7,8 @@ import {Image} from "react-bootstrap";
 import styled from 'styled-components';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
-
-
+import axios from "axios";
+import { useParams } from 'react-router-dom';
 
 const CustomSlider = styled(Slider)`
 
@@ -49,8 +49,35 @@ const StyledImageWrapper = styled.div`
 `;
 
 
-function AutoPlay() {
+function AutoPlay({postId}) {
+    const [linkedImages, setLinkedImages] = useState([]);
+    const [isLoading, setIsLoading] = useState(true);
     const [currentSlide, setCurrentSlide] = useState(0);
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                // URL에서 postId 값을 사용하여 요청
+                const response = await axios.get(`http://44.206.161.54:8080/funding/status/details/${postId}`);
+                setLinkedImages(response.data.result.data.linkedImages);
+
+
+                setIsLoading(false);
+                //     img_url 원래는 data.linkedImages
+            } catch (error) {
+                console.error("데이터를 불러오는 데 실패했습니다.", error);
+
+
+                setIsLoading(false);
+            }
+        };
+
+        fetchData();
+    }, [postId]); // postId가 변경될 때마다 fetchData 함수를 다시 실행
+
+    if (isLoading) {
+        return <div>Loading...</div>;
+    }
+
     const settings = {
         dots: true,
         className: "center",
@@ -59,15 +86,30 @@ function AutoPlay() {
         centerPadding: "50px",
         slidesToShow: 4.3,
         slidesToScroll: 1,
-        // autoplay: true,
+        autoplay: true,
         speed:2000,
+
+      
+
         autoplaySpeed: 1000,
+
         cssEase: "linear",
         beforeChange: (current, next) => setCurrentSlide(next),
     };
+
+
+
+
     return (
         <div className="slider-container">
             <CustomSlider {...settings}>
+                {linkedImages.map((imgUrl, index) => (
+                    <div key={index}>
+                        <StyledImageWrapper>
+                            <Image src={imgUrl} alt={`Slide ${index + 1}`} fluid />
+                        </StyledImageWrapper>
+                    </div>
+                ))}
 
 
 

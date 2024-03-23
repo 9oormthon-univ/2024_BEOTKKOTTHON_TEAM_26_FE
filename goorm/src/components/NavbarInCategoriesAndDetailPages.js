@@ -21,7 +21,6 @@ const StyledNavLink = styled(Nav.Link)`
   letter-spacing: -0.1px;
 
 
-  transform: matrix(1, -0.01, 0.01, 1, 0, 0);
 `;
 function NavbarInCategoriesAndDetailPages() {
     return(
