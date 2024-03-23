@@ -1,12 +1,19 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
-import Progress from "../../components/Progress";
+import axios from "axios";
+import exampleImage from "../../images/ad1.png";
+import exampleImage3 from "../../images/ad2.png";
+import exampleImage2 from "../../images/ad3.png";
+import { Carousel, Image } from "react-bootstrap";
+
+const StyledCarouselItem = styled(Carousel.Item)`
+  max-width: 100%;
+`;
 
 const Background = styled.div`
   position: relative;
   margin: auto;
   width: 1280px;
-  // height: 832px;
   height: 100vh;
   font-size: 40px;
 `;
@@ -23,7 +30,7 @@ const Logo = styled.div`
 `;
 const MainTitle = styled.div`
   position: absolute;
-  width: 410px;
+  width: 465px;
   height: 27px;
   left: 185px;
   top: 50px;
@@ -67,14 +74,11 @@ const FundingBtn = styled.div`
   line-height: 42px;
   text-align: center;
 `;
-const Notice = styled.div`
-  padding-top: 8px;
-`;
+const Notice = styled.div``;
 const AdvArea = styled.div`
   position: relative;
-  width: 1280px; 
+  width: 1280px;
   height: 114px;
-  background: black;
 `;
 const FundingArea = styled.div`
   position: relative;
@@ -87,7 +91,7 @@ const FundingCon = styled.div`
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  width: 403px;
+  width: 488px;
   height: 88px;
   padding-top: 13px;
   margin-left: 141px;
@@ -112,17 +116,13 @@ const FundingBox5 = styled.div`
   width: 54px;
   height: 85.3px;
 `;
+const FundingBox6 = styled.div`
+  width: 54px;
+  height: 85.3px;
+`;
 const FundingCir = styled.div`
   position: absolute;
-`;
-const FtCon = styled.div`
-  position: absolute;
-  width: 460px;
-  left: -20px;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
+  // right: 100px;
 `;
 const FundingTitle1 = styled.div`
   position: absolute;
@@ -164,7 +164,7 @@ const FundingTitle4 = styled.div`
   position: absolute;
   width: 91px;
   top: 80px;
-  left: 243px;
+  left: 241px;
   font-family: "Arial";
   font-weight: bold;
   font-size: 12px;
@@ -176,13 +176,41 @@ const FundingTitle5 = styled.div`
   position: absolute;
   width: 91px;
   top: 80px;
-  left: 331px;
+  left: 329px;
   font-family: "Arial";
   font-weight: bold;
   font-size: 12px;
   line-height: 18px;
   text-align: center;
   color: #000000;
+`;
+const FundingTitle6 = styled.div`
+  position: absolute;
+  width: 91px;
+  top: 80px;
+  left: 418px;
+  font-family: "Arial";
+  font-weight: bold;
+  font-size: 12px;
+  line-height: 18px;
+  text-align: center;
+  color: #000000;
+`;
+const SearchArea = styled.div`
+  position: absolute;
+  width: 473px;
+  height: 41px;
+  background: red;
+  left: 723px;
+  top: 235px;
+  background: #ffffff;
+  border: 1px solid #00591b;
+  border-radius: 24px;
+`;
+const SearchImg = styled.div`
+  position: absolute;
+  top: -17px;
+  left: 430px;
 `;
 const CategoryArea = styled.div`
   position: relative;
@@ -208,14 +236,12 @@ const CateTitle = styled.div`
   height: 30px;
   left: 30px;
   top: 8px;
-
   font-family: "Arial";
   font-style: normal;
   font-weight: 700;
   font-size: 18px;
   line-height: 27px;
   letter-spacing: -0.1px;
-
   color: #000000;
 `;
 const CatePic1 = styled.div``;
@@ -338,44 +364,18 @@ const FoodType8 = styled.div`
   line-height: 18px;
   color: #000000;
 `;
-const DistanceArea = styled.div`
-  position: relative;
-  width: 1280px;
-  height: 110px;
-`;
-const DisTitle = styled.div`
-  position: absolute;
-  width: 300px;
-  height: 30px;
-  left: 112px;
-  top: 19px;
-
-  font-family: "Arial";
-  font-style: normal;
-  font-weight: 700;
-  font-size: 18px;
-  line-height: 27px;
-  letter-spacing: -0.1px;
-  color: #000000;
-`;
-const DisBar = styled.div`
-  position: absolute;
-  width: 100%;
-  top: 70px;
-`;
 const NowFundingArea = styled.div`
   position: relative;
   width: 1120px;
   height: auto;
   margin: auto;
-  // height: 252px;
 `;
 const NowTitle = styled.div`
   position: relative;
   width: 206px;
   height: 23px;
-  padding-left: 36px;
-  margin-bottom: 10px;
+  padding-left: 25px;
+  margin-top: 25px;
   font-family: "Arial";
   font-style: normal;
   font-weight: 700;
@@ -387,25 +387,27 @@ const NowTitle = styled.div`
 const NowCon = styled.div`
   position: relative;
   width: 1120px;
-  height: 340px;
-  // background:red;
+  height: auto;
+  margin: auto;
   position: relative;
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: space-evenly;
   align-items: center;
+  flex-wrap: wrap;
 `;
 const NowBox = styled.div`
   position: relative;
   width: 332px;
   height: 340px;
+  margin-top: 20px;
 `;
 const NowImg = styled.div`
   position: relative;
   width: 332px;
   height: 228px;
+  margin: auto;
   border-radius: 8px;
-  background: #8FD1A3;
 `;
 const NowTitleDetail = styled.div`
   position: relative;
@@ -424,35 +426,102 @@ const NowTitleDetail = styled.div`
 `;
 const NowDesc = styled.div`
   position: relative;
-  width: 332px;
+  width: 200px;
   height: 18px;
-  margin-top: 5px;
-  text-align: center;
+
+  margin: auto;
+  margin-top: 15px;
+
+  display: flex;
+  flex-wrap: noxrap;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+`;
+const Tag1 = styled.div`
+  width: auto;
+  height: 27px;
+  background: #004716;
+  border-radius: 20px;
   font-family: "Arial";
   font-style: normal;
-  font-weight: 700;
-  font-size: 12px;
-  line-height: 18px;
-  color: #00591b;
-`;
-const OpenBtn = styled.div`
-  position: relative;
-  width: 288px;
-  height: 42px;
-  margin: auto;
-  margin-top: 5px;
-  background: #004716;
-  border-radius: 8px;
-  line-height: 42px;
-  color: #fff;
-  font-family: "Arial";
-  font-weight: 700;
-  font-size: 16px;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 27px;
   text-align: center;
   letter-spacing: -0.1px;
+  color: #fff;
+  padding: 0 12px;
+`;
+const Tag2 = styled.div`
+  width: auto;
+  height: 27px;
+  background: #004716;
+  border-radius: 20px;
+  font-family: "Arial";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 27px;
+  text-align: center;
+  letter-spacing: -0.1px;
+  color: #fff;
+  padding: 0 12px;
 `;
 
 const MainFunding = () => {
+  const [fundingData, setFundingData] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(
+          "http://44.206.161.54:8080/funding/all"
+        );
+        setFundingData(response.data.result.data.posts.slice(0, 3));
+      } catch (error) {
+        console.error("에러발생: ", error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  function CarouselsInDetail() {
+    return (
+      <Carousel>
+        <StyledCarouselItem>
+          <Image
+            style={{ width: "1280px" }}
+            src={exampleImage}
+            alt="First slide"
+            fluid
+          />
+          {/*fluid가 반응형*/}
+        </StyledCarouselItem>
+
+        <StyledCarouselItem>
+          <Image
+            style={{ width: "1280px" }}
+            src={exampleImage2}
+            alt="First slide"
+            fluid
+          />
+          {/*fluid가 반응형*/}
+        </StyledCarouselItem>
+
+        <StyledCarouselItem>
+          <Image
+            style={{ width: "1280px" }}
+            src={exampleImage3}
+            alt="First slide"
+            fluid
+          />
+        </StyledCarouselItem>
+      </Carousel>
+    );
+  }
+
   return (
     <Background>
       <Header>
@@ -464,7 +533,7 @@ const MainFunding = () => {
           />
         </Logo>
         <MainTitle>
-          모두가 잘먹고 잘살 수 밖에 없는 건강한 음식 펀딩 플랫폼
+          모두가 잘먹고 잘살 수 밖에 없는 로컬 식당(F&B) 성장지원 플랫폼
         </MainTitle>
         <MenuCon>
           <MenuBox>
@@ -482,7 +551,9 @@ const MainFunding = () => {
         </MenuCon>
       </Header>
 
-      <AdvArea></AdvArea>
+      <AdvArea>
+        <CarouselsInDetail />
+      </AdvArea>
 
       <FundingArea>
         <FundingCon>
@@ -531,9 +602,42 @@ const MainFunding = () => {
             </FundingCir>
           </FundingBox5>
           <FundingTitle5>이달의 기업</FundingTitle5>
-          <FtCon></FtCon>
+          <FundingBox6>
+            <FundingCir>
+              <img
+                src={`${process.env.PUBLIC_URL}/images/New.png`}
+                width="54px"
+              />
+            </FundingCir>
+          </FundingBox6>
+          <FundingTitle6>신메뉴 체험단</FundingTitle6>
         </FundingCon>
       </FundingArea>
+
+      <SearchArea>
+        <input
+          type="text"
+          placeholder="ex. #저칼로리 #샐러드 #비건 #다이어트 #식단관리"
+          style={{
+            width: "400px",
+            height: "35px",
+            border: "none",
+            fontSize: "14px",
+            color: "#969696",
+            lineHeight: "14px",
+            left: "23px",
+            top: "2px",
+            position: "absolute",
+            outline: "none",
+          }}
+        />
+        <SearchImg>
+          <img
+            src={`${process.env.PUBLIC_URL}/images/SearchIcon.png`}
+            width="24px"
+          />
+        </SearchImg>
+      </SearchArea>
 
       <CategoryArea>
         <CateCon>
@@ -597,46 +701,26 @@ const MainFunding = () => {
         <FoodType8>디저트</FoodType8>
       </CategoryArea>
 
-      <DistanceArea>
-        <DisTitle>현재 내 위치에서 마켓까지 최대 거리</DisTitle>
-        <DisBar>
-          <Progress now={20} max={100}/>
-        </DisBar>
-      </DistanceArea>
-
       <NowFundingArea>
         <NowTitle>지금 뜨고 있는 펀딩</NowTitle>
         <NowCon>
-          <NowBox>
-            <NowImg></NowImg>
-            <NowTitleDetail>카페 어쩌고</NowTitleDetail>
-            <NowDesc>설명이라네요</NowDesc>
-            <OpenBtn>
-              <img
-                src={`${process.env.PUBLIC_URL}/images/whiteBell.png`}
-                width="18px"
-                height="19.6px"
-                style={{
-                  marginTop: "-3px",
-                  verticalAlign: "middle",
-                  marginRight: "5px",
-                }}
-              />
-              펀딩 open!
-            </OpenBtn>
-          </NowBox>
-          <NowBox>
-            <NowImg></NowImg>
-            <NowTitleDetail></NowTitleDetail>
-            <NowDesc></NowDesc>
-            <OpenBtn></OpenBtn>
-          </NowBox>
-          <NowBox>
-            <NowImg></NowImg>
-            <NowTitleDetail></NowTitleDetail>
-            <NowDesc></NowDesc>
-            <OpenBtn></OpenBtn>
-          </NowBox>
+          {fundingData.map((funding) => (
+            <NowBox key={funding.id}>
+              <NowImg>
+                <img
+                  src={funding.img_url}
+                  alt={funding.title}
+                  width="332px"
+                  height="228px"
+                />
+              </NowImg>
+              <NowTitleDetail>{funding.title}</NowTitleDetail>
+              <NowDesc>
+                <Tag1>매콤한</Tag1>
+                <Tag2>비 오는</Tag2>
+              </NowDesc>
+            </NowBox>
+          ))}
         </NowCon>
       </NowFundingArea>
     </Background>

@@ -1,6 +1,6 @@
 // 상품 등록 페이지
 import NavbarInCategoriesAndDetailPages from "../components/NavbarInCategoriesAndDetailPages";
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import {InputGroup} from "react-bootstrap";
 import Form from 'react-bootstrap/Form';
@@ -108,18 +108,33 @@ const LoadingImage = ({ imageUrl, altText = '' }) => {
 };
 
 function Submit() {
+    const [imagePreview, setImagePreview] = useState(null);
+
+  const handleFileChange = (event) => {
+    const file = event.target.files[0];
+    const reader = new FileReader();
+
+    reader.onloadend = () => {
+      setImagePreview(reader.result);
+    };
+
+    if (file) {
+      reader.readAsDataURL(file);
+    }
+  };
+
     return (
         <div>
             <NavbarInCategoriesAndDetailPages></NavbarInCategoriesAndDetailPages>
             {/*본문내용*/}
             <div style={{width : '80%',marginLeft : '5%'}}>
                 <SubmitContentTitleDiv>
-                    <SubmitContentTitle>상품에 대해 한줄로 자유롭게 어필해 주세요!</SubmitContentTitle>
+                    <SubmitContentTitle>상품 제목을 입력해 주세요!</SubmitContentTitle>
                     {/*인풋박스*/}
                     <FlexDiv >
 
                         <InputGroup>
-                            <Form.Control aria-label="Dollar amount (with dot and two decimal places)" placeholder="ex. 역전할머니 맥주 반건조 버터구이 오징어는 낮은 칼로리와 고소한 맛을 즐길 수 있습니다."
+                            <Form.Control aria-label="Dollar amount (with dot and two decimal places)" placeholder="ex. 역전할머니 맥주 반건조 버터구이 오징어"
                                           style={{
                                               width: '95%', // 너비 조정
                                               height: '47px',
@@ -129,6 +144,14 @@ function Submit() {
 
                         </InputGroup>
                         <SquareButton>자주쓰는문구</SquareButton>
+                    </FlexDiv>
+
+                    {/*상품사진등록*/}
+                    <SubmitContentTitle>상품 사진을 등록해 주세요!</SubmitContentTitle>
+
+                    <FlexDiv style={{gap : '20px'}}>
+                        <input type="file" multiple></input>
+                        
                     </FlexDiv>
                     {/*ai 분석란*/}
                     <SubmitContentTitle>AI가 해시태그 생성중!</SubmitContentTitle>
@@ -141,16 +164,7 @@ function Submit() {
 
 
 
-                    {/*상품사진등록*/}
-                    <SubmitContentTitle>상품 사진을 등록해 주세요!</SubmitContentTitle>
-
-                    <FlexDiv style={{gap : '20px'}}>
-
-                        <Image imageUrl={exampleImage3}/>
-                        <Image imageUrl={exampleImage3}/>
-                        <Image imageUrl={exampleImage3}/>
-                        <Image imageUrl={exampleImage3}/>
-                    </FlexDiv>
+                    
 
                     {/*상품설명*/}
                     <SubmitContentTitle>상품에 대해 자세히 설명해 주세요!</SubmitContentTitle>
