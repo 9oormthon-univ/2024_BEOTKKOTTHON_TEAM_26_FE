@@ -10,12 +10,16 @@ import DetailView from "./pages/DetailView";
 import Register from "./pages/Register";
 
 import PayComplete from "./pages/PayComplete";
+import Submit from "./pages/Submit";
 
 
 function App() {
   return (
     <BrowserRouter>
       <div>
+
+
+
         <Routes>
           {/* 메인페이지 */}
           <Route path="/" element={<MainFunding />} />
@@ -34,6 +38,8 @@ function App() {
 
           {/*등록완료 페이지*/}
           <Route path="/register" element={<Register />} />
+          {/*상품 사진, 정보 등록 페이지*/}
+          <Route path="/submit" element={<Submit />} />
 
 
           {/* 결제완료 페이지 */}
