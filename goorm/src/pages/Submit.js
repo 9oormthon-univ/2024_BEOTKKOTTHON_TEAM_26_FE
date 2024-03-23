@@ -2,7 +2,7 @@
 import NavbarInCategoriesAndDetailPages from "../components/NavbarInCategoriesAndDetailPages";
 import React, { useState } from "react";
 import styled from "styled-components";
-import {InputGroup} from "react-bootstrap";
+import {Button, InputGroup} from "react-bootstrap";
 import Form from 'react-bootstrap/Form';
 import exampleImage3 from '../images/상품사진등록.png';
 import exampleImage4 from '../images/로딩중.png';
@@ -162,7 +162,7 @@ function Submit() {
                             />
 
                         </InputGroup>
-                        
+                        <Button variant="success" style={{width : '150px'}}>AI해시태그생성</Button>{' '}
                     </FlexDiv>
 
                     {/*ai 분석란*/}

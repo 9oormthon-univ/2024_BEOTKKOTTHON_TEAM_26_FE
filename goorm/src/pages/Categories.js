@@ -10,7 +10,7 @@ import {useEffect, useState} from "react";
 import exampleImage from '../images/img.png';
 import NavbarInCategoriesAndDetailPages from "../components/NavbarInCategoriesAndDetailPages";
 import styled, {createGlobalStyle} from "styled-components"; // 이미지를 import 합니다.
-import { useParams } from 'react-router-dom';
+import { useParams,useNavigate } from 'react-router-dom';
 
 function formatDate(fund_start_date) {
     const date = new Date(fund_start_date);
@@ -154,20 +154,34 @@ const CardsCategoryButton = styled(CategoryButton)`
   width: 100%;
 `;
 
-function CardsInCategory({id, title, img_url, explanation, fund_start_date}) {
+function CardsInCategory({id, title, img_url, explanation, fund_start_date,  hashTagnames}) {
+    const navigate = useNavigate(); // 네비게이션 함수 초기화
+
+    // 이미지 클릭 이벤트 핸들러
+    const handleImageClick = () => {
+        navigate(`/detailview/${id}`); // /detailview/{id} 경로로 이동
+    };
+
     return (
         <StyledCard>
             {/*<StyledCardImg variant="top" src={exampleImage}*/}
             {/*/>*/}
-            <StyledCardImg variant="top" src={img_url} />
+            <StyledCardImg variant="top" src={img_url} onClick={handleImageClick}  />
             <Card.Body>
                 {/*서버에서 데이터 받아왔을 때*/}
                 <Card.Title style={{ textAlign: 'center',fontWeight : '700' }}>{title}</Card.Title>
-                {/*<Card.Text>{explanation}</Card.Text>*/}
-                {/*<BigSquareButton>{fund_start_date} 펀딩 오픈!</BigSquareButton>*/}
-                {/*<BigSquareButton>{formatDate(fund_start_date)}</BigSquareButton>*/}
-                <div style={{display : 'flex', justifyContent : 'center'}}><CategoryButtonAnother>디저트</CategoryButtonAnother>
-                    <CategoryButtonAnother>달콤한</CategoryButtonAnother></div>
+
+                {/* 해시태그 버튼을 동적으로 생성 */}
+                <div style={{display : 'flex', justifyContent : 'center'}}>
+                    {hashTagnames.map((hashtag, index) => (
+                        <CategoryButtonAnother key={index}>
+                            {hashtag}
+                        </CategoryButtonAnother>
+
+                    // <CategoryButtonAnother>디저트</CategoryButtonAnother>
+                    // <CategoryButtonAnother>달콤한</CategoryButtonAnother>
+                        ))}
+                    </div>
 
 
 
@@ -262,6 +276,8 @@ function Categories() {
                                 img_url={post.img_url}
                                 explanation={post.explanation}
                                 fund_start_date={post.fund_start_date}
+
+                                hashTagnames={post.hashTagnames} // 해시태그 데이터를 prop으로 전달
                             />
 
 

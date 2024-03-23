@@ -16,7 +16,7 @@ import CenterMode from "../components/CarouselsInDetailView";
 import SimpleSlider from "../components/CarouselsInDetailView";
 import AutoPlay from "../components/CarouselsInDetailView";
 import axios from "axios";
-import {useParams} from "react-router-dom";
+import {useParams, useNavigate} from "react-router-dom";
 // 이미지 컴포넌트의 스타일링을 위한 스타일 컴포넌트
 // const ImageWrapper = styled.div`
 //   transition: transform .3s ease;
@@ -244,27 +244,14 @@ color: #00591B; /* 기본 글자 색상 설정 */
 `;
 
 
-function CarouselsInDeatilView() {
+function CarouselsInDeatilView({ imgUrls }) {
     return (
-
         <Carousel>
-            <StyledCarouselItem>
-                {/*<Image style={{margin: '30px'}} src={exampleImage} fluid/>*/}
-                <Image  src={exampleImage} alt="First slide" fluid />
-                {/*fluid가 반응형*/}
-            </StyledCarouselItem>
-            <StyledCarouselItem>
-                {/*<Image style={{margin: '30px'}} src={exampleImage} fluid/>*/}
-                <Image  src={exampleImage3} alt="First slide" fluid />
-                {/*fluid가 반응형*/}
-            </StyledCarouselItem>
-
-            <StyledCarouselItem>
-                {/*<Image style={{margin: '30px'}} src={exampleImage} fluid/>*/}
-                <Image  src={exampleImage2} alt="First slide" fluid />
-                {/*fluid가 반응형*/}
-            </StyledCarouselItem>
-
+            {imgUrls.map((imgUrl, index) => (
+                <StyledCarouselItem key={index}>
+                    <Image src={imgUrl} alt={`Slide ${index + 1}`} fluid />
+                </StyledCarouselItem>
+            ))}
         </Carousel>
 
     )
@@ -275,6 +262,13 @@ function CarouselsInDeatilView() {
 function DetailView() {
     const [post, setPost] = useState(null);
     const { postId } = useParams(); // URL에서 postId 값을 직접 가져옵니다.
+
+    const navigate = useNavigate(); // useNavigate 훅 호출
+
+    // "펀딩 참여하기" 버튼 클릭 핸들러
+    const handleParticipateClick = () => {
+        navigate('/complete'); // '/complete' 경로로 이동
+    };
 
     useEffect(() => {
         const fetchData = async () => {
@@ -288,6 +282,7 @@ function DetailView() {
 
         fetchData();
     }, [postId]); // postId 값이 변경될 때마다 fetchData 함수가 다시 실행되도록 의존성 배열에 추가
+    const imgUrls = post ? [post.img_url, ...post.linkedImages] : [];
 
     // 여기서 post 데이터를 사용하여 UI를 구성합니다.
     // 예를 들어, post.title, post.img_url 등을 사용할 수 있습니다.
@@ -301,7 +296,8 @@ function DetailView() {
             {/*캐러셀 담을 div 박스 */}
 <div style={{justifyContent : 'center', alignItems : 'center', textAlign : 'center'}}>
     <CarouselContainer>
-        <CarouselsInDeatilView></CarouselsInDeatilView>
+        {/* Now passing imgUrls as props */}
+        <CarouselsInDeatilView imgUrls={imgUrls} />
     </CarouselContainer>
 
     <ContentBottom>AI가 추천해준 해시태그로 골랐어요!</ContentBottom>
@@ -378,7 +374,7 @@ function DetailView() {
         {/*44.206.161.54*/}
         {/*funding/status/details/:post_id*/}
 
-        <SquareButton>펀딩 참여하기</SquareButton>
+        <SquareButton onClick={handleParticipateClick}>펀딩 참여하기</SquareButton>
 
 
 
