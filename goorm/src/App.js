@@ -3,8 +3,7 @@ import MainFunding from "./pages/main/MainFunding";
 import Contest from "./pages/main/Contest";
 import MyFunding from "./pages/my/MyFunding";
 import Categories from "./pages/Categories";
-import Detail from "./pages/Detail";
-import Payment from "./pages/Payment";
+
 import DetailView from "./pages/DetailView";
 import Register from "./pages/Register";
 import PayComplete from "./pages/PayComplete";
@@ -27,11 +26,14 @@ function App() {
 
           {/*상세페이지 1,2*/}
           <Route path="/categories" element={<Categories />} />
-          <Route path="/detail/:id" element={<Detail />} />
+          <Route path="/categories/:category_id" element={<Categories />} />
+          {/*<Route path="/detail/:id" element={<Detail />} />*/}
           {/*펀딩제품 상세보기*/}
           <Route path="/detailview" element={<DetailView />} />
+
+          <Route path="/detailview/:postId" element={<DetailView />} />
           {/*결제진행창 */}
-          <Route path="/payment" element={<Payment />} />
+          {/*<Route path="/payment" element={<Payment />} />*/}
 
           {/*등록완료 페이지*/}
           <Route path="/register" element={<Register />} />

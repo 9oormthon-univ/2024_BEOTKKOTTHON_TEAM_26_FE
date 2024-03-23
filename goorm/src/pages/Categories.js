@@ -5,11 +5,19 @@ import axios from 'axios';
 import Navbar from 'react-bootstrap/Navbar';
 import {Button, Card, Col, Nav, NavDropdown, ProgressBar, Row} from "react-bootstrap";
 import Progress from "../components/Progress";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 // import CardsInCategory from "../components/CardsInCategory";
 import exampleImage from '../images/img.png';
 import NavbarInCategoriesAndDetailPages from "../components/NavbarInCategoriesAndDetailPages";
 import styled, {createGlobalStyle} from "styled-components"; // 이미지를 import 합니다.
+import { useParams } from 'react-router-dom';
+
+function formatDate(fund_start_date) {
+    const date = new Date(fund_start_date);
+    const options = { month: 'long', day: 'numeric' }; // "월 일" 형식으로 표시
+    const formattedDate = new Intl.DateTimeFormat('ko-KR', options).format(date);
+    return `${formattedDate} 펀딩 오픈!`;
+}
 
 // 전역 설정
 const GlobalStyle = createGlobalStyle`
@@ -80,7 +88,8 @@ const CategoryButton = styled.button` //.button-in-category
   border: none;
 
   text-align: center;
-  margin: auto 10px;
+  margin-left: 15px;
+  margin-bottom: 10px;
   cursor: pointer;
   color: black;
   font-family: 'Arial';
@@ -94,6 +103,36 @@ const CategoryButton = styled.button` //.button-in-category
   
   &:hover {
     background-color: #004716; /* 활성화될 때의 색상 */
+    color: white;
+  }
+`;
+
+const CategoryButtonAnother = styled.button` //.button-in-category
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 9px 11px;
+  gap: 15px;
+  height: 25px;
+  background-color: #004716;
+  border-radius: 20px;
+  border: none;
+
+  text-align: center;
+  margin: auto 10px;
+  cursor: pointer;
+  color: white;
+  font-family: 'Arial';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 18px;
+  /* identical to box height, or 150% */
+  text-align: center;
+  letter-spacing: -0.1px;
+  
+  &:hover {
+    background-color: #8FD1A3; /* 활성화될 때의 색상 */
     color: white;
   }
 `;
@@ -115,43 +154,43 @@ const CardsCategoryButton = styled(CategoryButton)`
   width: 100%;
 `;
 
-function CardsInCategory() {
+function CardsInCategory({id, title, img_url, explanation, fund_start_date}) {
     return (
         <StyledCard>
-            <StyledCardImg variant="top" src={exampleImage} />
+            {/*<StyledCardImg variant="top" src={exampleImage}*/}
+            {/*/>*/}
+            <StyledCardImg variant="top" src={img_url} />
             <Card.Body>
-                <Card.Title style={{
-                    textAlign : 'center'
-                }}>Card Title</Card.Title>
-                <Card.Text>
-                    Some quick example text to
-                </Card.Text>
-               <BigSquareButton>3월 16일 펀딩 오픈!</BigSquareButton>
+                {/*서버에서 데이터 받아왔을 때*/}
+                <Card.Title style={{ textAlign: 'center',fontWeight : '700' }}>{title}</Card.Title>
+                {/*<Card.Text>{explanation}</Card.Text>*/}
+                {/*<BigSquareButton>{fund_start_date} 펀딩 오픈!</BigSquareButton>*/}
+                {/*<BigSquareButton>{formatDate(fund_start_date)}</BigSquareButton>*/}
+                <div style={{display : 'flex', justifyContent : 'center'}}><CategoryButtonAnother>디저트</CategoryButtonAnother>
+                    <CategoryButtonAnother>달콤한</CategoryButtonAnother></div>
+
+
+
+
+                {/* <Card.Title style={{*/}
+                {/*     textAlign : 'center'*/}
+                {/* }}>Card Title</Card.Title>*/}
+                {/* <Card.Text>*/}
+                {/*     Some quick example text to*/}
+                {/* </Card.Text>*/}
+                {/*<BigSquareButton>3월 16일 펀딩 오픈!</BigSquareButton>*/}
+
+
+
+
             </Card.Body>
-            </StyledCard>
+        </StyledCard>
     )
 }
-
-
-function Categories() {
-
-
-
-    // 상상된 서버 요청 로직 (주석 처리됨)
-    /*
-    useEffect(() => {
-      fetch('/api/products')
-        .then(response => response.json())
-        .then(data => {
-          // 상태 업데이트 또는 다른 로직
-        })
-        .catch(error => console.error('Error:', error));
-    }, []);
-    */
-    const CategoriesHeadFont = styled(Col)`
+const CategoriesHeadFont = styled(Col)`
   text-align: left;
   padding: 5px;
-  margin-left: 3%;
+  margin-left: 5%;
   font-family: 'Arial';
   font-style: normal;
   font-weight: 700;
@@ -160,6 +199,23 @@ function Categories() {
   /* identical to box height, or 150% */
   letter-spacing: -0.1px;
 `;
+
+
+function Categories() {
+    const [posts, setPosts] = useState([]);
+    const { category_id } = useParams(); // URL에서 category_id 값을 가져옵니다
+    useEffect(() => {
+        axios.get(`http://44.206.161.54:8080/funding/all/${category_id}`)
+            .then((response) => {
+                setPosts(response.data.result.data.posts);
+            })
+            .catch((error) => {
+                console.error('Error fetching data: ', error);
+            });
+    }, [category_id]); // category_id가 변경될 때마다 useEffect를 다시 실행합니다.
+
+
+
     return (
 // 전체를 담는 div 컨테이너
         <div>
@@ -172,29 +228,43 @@ function Categories() {
             <CategoriesHeadFont>현재 내 위치에서 마켓까지 최대 거리</CategoriesHeadFont>
 
 
-            {/*현재 위치 scroll bar*/}
-            <div>
-                {/* Progress 컴포넌트를 사용하고, 진행 상황으로 now을 전달합니다. */}
-                <Progress now={20} max={100}/>
-            </div>
+
 
 
             {/* 카테고리 */}
             <div style={{display: 'flex', justifyContent: 'flex-start', padding: '10px', marginLeft: '3%'}}>
 
-                <CategoryButton>다이어트 도시락</CategoryButton>
-                <CategoryButton>비건</CategoryButton>
-                <CategoryButton>연어</CategoryButton>
-                <CategoryButton>리코타 치즈</CategoryButton>
-                <CategoryButton>닭가슴살</CategoryButton>
-                <CategoryButton>브라타 치즈</CategoryButton>
+                <CategoryButton>100M</CategoryButton>
+                <CategoryButton>200M</CategoryButton>
+                <CategoryButton>300M</CategoryButton>
+                <CategoryButton>400M</CategoryButton>
+                <CategoryButton>500M</CategoryButton>
+
             </div>
 
             <Container>
                 <Row className="g-4">
-                    {Array.from({ length: 6 }).map((_, idx) => ( // 6개의 카드를 생성
-                        <StyledCol key={idx} xs={12} md={6} lg={4}> {/* 화면 크기에 따른 열 조정 */}
-                            <CardsInCategory />
+
+
+
+                    {/*{Array.from({ length: 6 }).map((_, idx) => ( // 6개의 카드를 생성*/}
+                    {/*    <StyledCol key={idx} xs={12} md={6} lg={4}> /!* 화면 크기에 따른 열 조정 *!/*/}
+                    {/*        <CardsInCategory />*/}
+
+                    {/*    서버에서 받아왔을 때*/}
+
+
+                    {posts.map((post) => (
+                        <StyledCol key={post.id} xs={12} md={6} lg={4}>
+                            <CardsInCategory
+                                id={post.id}
+                                title={post.title}
+                                img_url={post.img_url}
+                                explanation={post.explanation}
+                                fund_start_date={post.fund_start_date}
+                            />
+
+
                         </StyledCol>
                     ))}
                 </Row>
@@ -203,14 +273,7 @@ function Categories() {
 
 
 
-            <button onClick={()=>{
-                axios.get(`${process.env.REACT_APP_API_URL}/logindata`).then((결과)=>{
-                    console.log(결과.data)
-                })
-                    .catch(()=>{
-                        console.log('실패함')
-                    })
-            }}>서버테스트 버튼</button>
+
         </div>
     )
 
