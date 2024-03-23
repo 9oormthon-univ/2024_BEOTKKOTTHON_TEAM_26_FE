@@ -247,97 +247,16 @@ const MyFunding = () => {
                 </span>
               </Inner_circle>
             </Circle>
-            {/*<input
+            <input
               type="number"
               value={progress}
               onChange={handleProgressChange}
               placeholder="진행률 입력"
               style={{ position: "absolute", top: "300px", left: "50%" }}
-                />*/}
+                />
           </Rate>
         </FundingBox>
-        <FundingBox>
-          <FunImg></FunImg>
-
-          <ContentBox>
-            <TagBox>
-              <StateBtn>펀딩진행 중!</StateBtn>
-              <FoodType>디저트</FoodType>
-              <Tag>매콤한</Tag>
-              <Tag>매콤달콤한</Tag>
-            </TagBox>
-
-            <ContentTitle>음식이름제목써주세요.</ContentTitle>
-
-            <SellerName>판매자이름</SellerName>
-
-            <FundingBtn>구매하러 가기</FundingBtn>
-          </ContentBox>
-
-          <Rate>
-            <Circle progress={progress}>
-              <Inner_circle>
-                <span
-                  style={{
-                    display: "flex",
-                    alignItems: "center",
-                    fontSize: "25px",
-                  }}
-                >
-                  {progress}%
-                </span>
-              </Inner_circle>
-            </Circle>
-            {/*<input
-              type="number"
-              value={progress}
-              onChange={handleProgressChange}
-              placeholder="진행률 입력"
-              style={{ position: "absolute", top: "300px", left: "50%" }}
-                />*/}
-          </Rate>
-        </FundingBox>
-        <FundingBox>
-          <FunImg></FunImg>
-
-          <ContentBox>
-            <TagBox>
-              <StateBtn>펀딩진행 중!</StateBtn>
-              <FoodType>디저트</FoodType>
-              <Tag>매콤한</Tag>
-              <Tag>매콤달콤한</Tag>
-            </TagBox>
-
-            <ContentTitle>음식이름제목써주세요.</ContentTitle>
-
-            <SellerName>판매자이름</SellerName>
-
-            <FundingBtn>구매하러 가기</FundingBtn>
-          </ContentBox>
-
-          <Rate>
-            <Circle progress={progress}>
-              <Inner_circle>
-                <span
-                  style={{
-                    display: "flex",
-                    alignItems: "center",
-                    fontSize: "25px",
-                  }}
-                >
-                  {progress}%
-                </span>
-              </Inner_circle>
-            </Circle>
-            {/*<input
-              type="number"
-              value={progress}
-              onChange={handleProgressChange}
-              placeholder="진행률 입력"
-              style={{ position: "absolute", top: "300px", left: "50%" }}
-                />*/}
-          </Rate>
-        </FundingBox>
+       
       </Container>
     </Background>
   );
