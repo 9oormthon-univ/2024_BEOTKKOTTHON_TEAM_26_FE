@@ -2,7 +2,7 @@
 
 ---
 
-![img.png](public%2Fimages%2Fimg.png)
+![31234.png](src%2Fmdimg%2F31234.png)
 
 ### 식(食)스펙이란?
 
@@ -18,11 +18,13 @@
 <h3 align="center">    주요기능 </h3>
 
 ---
-![img.png](public%2Fmdimg%2Fimg.png)
+![34.png](src%2Fmdimg%2F34.png)
 
-![img_1.png](public%2Fmdimg%2Fimg_1.png)
+---
+![341.png](src%2Fmdimg%2F341.png)
 
-![img.png](img.png)
+---
+![3412.png](src%2Fmdimg%2F3412.png)
 
 <h3 align="center">    🧑🏻‍💻👩🏻‍💻 TEAM </h3>
 
